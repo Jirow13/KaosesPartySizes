@@ -1,0 +1,25 @@
+﻿<Module>
+	<Name value="Kaoses Party Sizes"/>
+	<Id value="KaosesPartySizes"/>
+	<Version value="v0.1.11"/>
+	<SingleplayerModule value="true"/>
+	<MultiplayerModule value="false"/>
+	<DependedModules>
+		<DependedModule Id="Native"/>
+		<DependedModule Id="SandBoxCore"/>
+		<DependedModule Id="Sandbox"/>
+		<DependedModule Id="StoryMode" />
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value="KaosesPartySizes"/>
+			<DLLName value="KaosesPartySizes.dll"/>
+			<SubModuleClassType value="KaosesPartySizes.KaosesPartySizesSubModule"/>
+			<Tags>
+				<Tag key="DedicatedServerType" value="none" />
+				<Tag key="IsNoRenderModeElement" value="false" />
+			</Tags>
+		</SubModule>
+	</SubModules>
+	<Xmls/>
+</Module>
