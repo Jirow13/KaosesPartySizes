@@ -12,24 +12,24 @@ namespace KaosesPartySizes.PartyTypes
 		public MiscSizes(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("mercenary") && ModSettings.Instance.mercenaryFactionsMultiplierEnabled;
+			bool flag = this._partyTemplate.StringId.Contains("mercenary") && KaosesPartySizesSettings.Instance.mercenaryFactionsMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(ModSettings.Instance.mercenaryFactionsMinMultiplier, ModSettings.Instance.mercenaryFactionsMaxMultiplier);
+				base.processParties(KaosesPartySizesSettings.Instance.mercenaryFactionsMinMultiplier, KaosesPartySizesSettings.Instance.mercenaryFactionsMaxMultiplier);
 			}
 			else
 			{
-				bool flag2 = this._partyTemplate.StringId.Contains("outlaw") && ModSettings.Instance.outlawFactionsMultiplierEnabled;
+				bool flag2 = this._partyTemplate.StringId.Contains("outlaw") && KaosesPartySizesSettings.Instance.outlawFactionsMultiplierEnabled;
 				if (flag2)
 				{
-					base.processParties(ModSettings.Instance.outlawFactionsMinMultiplier, ModSettings.Instance.outlawFactionsMaxMultiplier);
+					base.processParties(KaosesPartySizesSettings.Instance.outlawFactionsMinMultiplier, KaosesPartySizesSettings.Instance.outlawFactionsMaxMultiplier);
 				}
 				else
 				{
-					bool flag3 = this._partyTemplate.StringId.Contains("villager") && ModSettings.Instance.villagersPesantsMultiplierEnabled;
+					bool flag3 = this._partyTemplate.StringId.Contains("villager") && KaosesPartySizesSettings.Instance.villagersPesantsMultiplierEnabled;
 					if (flag3)
 					{
-						base.processParties(ModSettings.Instance.villagersPesantsMinMultiplier, ModSettings.Instance.villagersPesantsMaxMultiplier);
+						base.processParties(KaosesPartySizesSettings.Instance.villagersPesantsMinMultiplier, KaosesPartySizesSettings.Instance.villagersPesantsMaxMultiplier);
 					}
 				}
 			}

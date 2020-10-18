@@ -38,7 +38,7 @@ namespace KaosesPartySizes.Behaviours
 				bool flag = MBObjectManager.Instance.GetObjectTypeList<Clan>() != null;
 				if (flag)
 				{
-					bool bLogPartySpawns = ModSettings.Instance.bLogPartySpawns;
+					bool bLogPartySpawns = KaosesPartySizesSettings.Instance.bLogPartySpawns;
 					if (bLogPartySpawns)
 					{
 						Logging.lm("-------------------------------------------");

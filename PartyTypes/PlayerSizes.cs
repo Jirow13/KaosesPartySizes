@@ -10,17 +10,17 @@ namespace KaosesPartySizes.PartyTypes
 		public PlayerSizes(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("char_") && ModSettings.Instance.charKingdomMultiplierEnabled;
+			bool flag = this._partyTemplate.StringId.Contains("char_") && KaosesPartySizesSettings.Instance.charKingdomMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(ModSettings.Instance.charKingdomMinMultiplier, ModSettings.Instance.charKingdomMaxMultiplier);
+				base.processParties(KaosesPartySizesSettings.Instance.charKingdomMinMultiplier, KaosesPartySizesSettings.Instance.charKingdomMaxMultiplier);
 			}
 			else
 			{
-				bool flag2 = this._partyTemplate.StringId.Contains("gamescom_player") && ModSettings.Instance.gamescomMultiplierEnabled;
+				bool flag2 = this._partyTemplate.StringId.Contains("gamescom_player") && KaosesPartySizesSettings.Instance.gamescomMultiplierEnabled;
 				if (flag2)
 				{
-					base.processParties(ModSettings.Instance.gamescomMinMultiplier, ModSettings.Instance.gamescomMaxMultiplier);
+					base.processParties(KaosesPartySizesSettings.Instance.gamescomMinMultiplier, KaosesPartySizesSettings.Instance.gamescomMaxMultiplier);
 				}
 			}
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using KaosesPartySizes.Utils;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Library;
 
 namespace KaosesPartySizes.Objects
 {
@@ -9,23 +10,29 @@ namespace KaosesPartySizes.Objects
 		public void processParties(float minMultiplier, float maxMultiplier)
 		{
 			bool flag = this._partyTemplate != null;
-			if (flag)
+
+			//if (flag)
+			if (flag && this._partyTemplate.Stacks != null)
 			{
+				Ux.ShowMessageError("this._partyTemplate = " + this._partyTemplate.StringId);
+				Ux.ShowMessageError("Stacks.Count = " + this._partyTemplate.Stacks.Count);
 				for (int i = 0; i < this._partyTemplate.Stacks.Count; i++)
 				{
+					Ux.ShowMessageError("Starting i = "+i);
 					this._partyTemplate.Stacks[i] = this.processStacks(this._partyTemplate.Stacks[i], minMultiplier, maxMultiplier);
 				}
 			}
 			else
 			{
-				Ux.ShowMessageError("Kaoses Parties processParties invalid Party template");
+				Ux.ShowMessageError("Kaoses Parties processParties invalid Party template or no stacks");
 			}
 		}
 
 		public void processBanditBoss(float minMultiplier, float maxMultiplier)
 		{
 			bool flag = this._partyTemplate != null;
-			if (flag)
+			//if (flag)
+			if (flag && this._partyTemplate.Stacks != null)
 			{
 				for (int i = 0; i < this._partyTemplate.Stacks.Count; i++)
 				{
@@ -39,7 +46,7 @@ namespace KaosesPartySizes.Objects
 			}
 			else
 			{
-				Ux.ShowMessageError("Kaoses Parties processBanditBoss invalid Party template");
+				Ux.ShowMessageError("Kaoses Parties processBanditBoss invalid Party template or no stacks");
 			}
 		}
 

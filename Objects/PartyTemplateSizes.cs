@@ -63,7 +63,6 @@ namespace KaosesPartySizes.Objects
 			}
 		}
 
-		// Token: 0x0600012F RID: 303 RVA: 0x00004148 File Offset: 0x00002348
 		public bool isNotRestrictedParty(PartyTemplateObject pt)
 		{
 			bool isRestricted = true;

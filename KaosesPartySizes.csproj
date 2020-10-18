@@ -49,6 +49,9 @@
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
   <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.0.2\lib\net472\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="$(MNB2DIR)\bin\Win64_Shipping_Client\TaleWorlds*.dll">
       <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
@@ -70,14 +73,8 @@
       <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ModLib">
-      <HintPath>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\LocalReferences\ModLib.dll</HintPath>
-    </Reference>
-    <Reference Include="ModLib.Definitions">
-      <HintPath>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\LocalReferences\ModLib.Definitions.dll</HintPath>
-    </Reference>
-    <Reference Include="ModLib.Patches">
-      <HintPath>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\LocalReferences\ModLib.Patches.dll</HintPath>
+    <Reference Include="MCMv3, Version=3.1.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Bannerlord.MCM.3.1.9\lib\net472\MCMv3.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -100,7 +97,6 @@
     <Compile Include="PartyTypes\MiscSizes.cs" />
     <Compile Include="PartyTypes\PlayerSizes.cs" />
     <Compile Include="PartyTypes\BanditSizes.cs" />
-    <Compile Include="Settings\Loader.cs" />
     <Compile Include="Settings\ModSettings.cs" />
     <Compile Include="Objects\PartyTemplateSizes.cs" />
     <Compile Include="Objects\BaseTemplateSizes.cs" />
@@ -113,10 +109,9 @@
     <Compile Include="Utils\Ux.cs" />
     <Content Include="SubModule.xml" />
   </ItemGroup>
-  <!-- Post-Build -->
-  <PropertyGroup>
-    <PostBuildEvent>xcopy /d /y "$(MSBuildProjectDirectory)\SubModule.xml" "D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\KaosesPartySizes"</PostBuildEvent>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <!--

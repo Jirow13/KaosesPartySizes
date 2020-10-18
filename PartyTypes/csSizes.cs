@@ -10,10 +10,10 @@ namespace KaosesPartySizes.PartyTypes
 		public csSizes(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
-			bool csFactionsMultiplierEnabled = ModSettings.Instance.csFactionsMultiplierEnabled;
-			if (csFactionsMultiplierEnabled)
+			bool csFactionsMultiplierEnabled = KaosesPartySizesSettings.Instance.csFactionsMultiplierEnabled;
+			if (csFactionsMultiplierEnabled == true)
 			{
-				base.processParties(ModSettings.Instance.csFactionsMinMultiplier, ModSettings.Instance.csFactionsMaxMultiplier);
+				base.processParties(KaosesPartySizesSettings.Instance.csFactionsMinMultiplier, KaosesPartySizesSettings.Instance.csFactionsMaxMultiplier);
 			}
 		}
 	}

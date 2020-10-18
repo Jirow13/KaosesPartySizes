@@ -22,13 +22,13 @@ namespace KaosesPartySizes.Utils
 		// Token: 0x0600000B RID: 11 RVA: 0x00002469 File Offset: 0x00000669
 		public static void ShowMessageInfo(string message)
 		{
-			Ux.ShowMessage(message, Color.ConvertStringToColor("#42FF00FF"), ModSettings.Instance.bLogToFile);
+			Ux.ShowMessage(message, Color.ConvertStringToColor("#42FF00FF"), KaosesPartySizesSettings.Instance.bLogToFile);
 		}
 
 		// Token: 0x0600000C RID: 12 RVA: 0x00002488 File Offset: 0x00000688
 		public static void ShowMessageDebug(string message)
 		{
-			bool bIsDebug = ModSettings.Instance.bIsDebug;
+			bool bIsDebug = KaosesPartySizesSettings.Instance.bIsDebug;
 			if (bIsDebug)
 			{
 				Ux.ShowMessage(message, Color.ConvertStringToColor("#E6FF00FF"), false);

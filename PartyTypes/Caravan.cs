@@ -12,17 +12,17 @@ namespace KaosesPartySizes.PartyTypes
 		public Caravan(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("elite") && ModSettings.Instance.eliteCaravansMultiplierEnabled;
+			bool flag = this._partyTemplate.StringId.Contains("elite") && KaosesPartySizesSettings.Instance.eliteCaravansMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(ModSettings.Instance.eliteCaravansMinMultiplier, ModSettings.Instance.eliteCaravansMaxMultiplier);
+				base.processParties(KaosesPartySizesSettings.Instance.eliteCaravansMinMultiplier, KaosesPartySizesSettings.Instance.eliteCaravansMaxMultiplier);
 			}
 			else
 			{
-				bool caravansMultiplierEnabled = ModSettings.Instance.caravansMultiplierEnabled;
+				bool caravansMultiplierEnabled = KaosesPartySizesSettings.Instance.caravansMultiplierEnabled;
 				if (caravansMultiplierEnabled)
 				{
-					base.processParties(ModSettings.Instance.caravansMinMultiplier, ModSettings.Instance.caravansMaxMultiplier);
+					base.processParties(KaosesPartySizesSettings.Instance.caravansMinMultiplier, KaosesPartySizesSettings.Instance.caravansMaxMultiplier);
 				}
 			}
 		}

@@ -5,20 +5,18 @@ using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
 {
-	// Token: 0x02000007 RID: 7
 	public class BanditSizes : BaseTemplateSizes
 	{
-		// Token: 0x0600011D RID: 285 RVA: 0x00003420 File Offset: 0x00001620
 		public BanditSizes(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
 			bool flag = this._partyTemplate.StringId.Contains("looter");
 			if (flag)
 			{
-				bool lootersMultiplierEnabled = ModSettings.Instance.lootersMultiplierEnabled;
+				bool lootersMultiplierEnabled = KaosesPartySizesSettings.Instance.lootersMultiplierEnabled;
 				if (lootersMultiplierEnabled)
 				{
-					base.processParties(ModSettings.Instance.lootersMinMultiplier, ModSettings.Instance.lootersMaxMultiplier);
+					base.processParties(KaosesPartySizesSettings.Instance.lootersMinMultiplier, KaosesPartySizesSettings.Instance.lootersMaxMultiplier);
 				}
 			}
 			else
@@ -26,17 +24,17 @@ namespace KaosesPartySizes.PartyTypes
 				bool flag2 = this._partyTemplate.StringId.Contains("sea");
 				if (flag2)
 				{
-					bool flag3 = base.isBossParty() && ModSettings.Instance.seaBossBanditsMultiplierEnabled;
+					bool flag3 = base.isBossParty() && KaosesPartySizesSettings.Instance.seaBossBanditsMultiplierEnabled;
 					if (flag3)
 					{
-						base.processBanditBoss(ModSettings.Instance.seaBossBanditMinMultiplier, ModSettings.Instance.seaBossBanditMaxMultiplier);
+						base.processBanditBoss(KaosesPartySizesSettings.Instance.seaBossBanditMinMultiplier, KaosesPartySizesSettings.Instance.seaBossBanditMaxMultiplier);
 					}
 					else
 					{
-						bool flag4 = ModSettings.Instance.seaBanditsMultiplierEnabled && !base.isBossParty();
+						bool flag4 = KaosesPartySizesSettings.Instance.seaBanditsMultiplierEnabled && !base.isBossParty();
 						if (flag4)
 						{
-							base.processParties(ModSettings.Instance.seaBanditMinMultiplier, ModSettings.Instance.seaBanditMaxMultiplier);
+							base.processParties(KaosesPartySizesSettings.Instance.seaBanditMinMultiplier, KaosesPartySizesSettings.Instance.seaBanditMaxMultiplier);
 						}
 					}
 				}
@@ -45,17 +43,17 @@ namespace KaosesPartySizes.PartyTypes
 					bool flag5 = this._partyTemplate.StringId.Contains("forest");
 					if (flag5)
 					{
-						bool flag6 = base.isBossParty() && ModSettings.Instance.forestBossBanditMultiplierEnabled;
+						bool flag6 = base.isBossParty() && KaosesPartySizesSettings.Instance.forestBossBanditMultiplierEnabled;
 						if (flag6)
 						{
-							base.processBanditBoss(ModSettings.Instance.forestBossBanditMinMultiplier, ModSettings.Instance.forestBossBanditMaxMultiplier);
+							base.processBanditBoss(KaosesPartySizesSettings.Instance.forestBossBanditMinMultiplier, KaosesPartySizesSettings.Instance.forestBossBanditMaxMultiplier);
 						}
 						else
 						{
-							bool flag7 = ModSettings.Instance.forestBanditMultiplierEnabled && !base.isBossParty();
+							bool flag7 = KaosesPartySizesSettings.Instance.forestBanditMultiplierEnabled && !base.isBossParty();
 							if (flag7)
 							{
-								base.processParties(ModSettings.Instance.forestBanditMinMultiplier, ModSettings.Instance.forestBanditMaxMultiplier);
+								base.processParties(KaosesPartySizesSettings.Instance.forestBanditMinMultiplier, KaosesPartySizesSettings.Instance.forestBanditMaxMultiplier);
 							}
 						}
 					}
@@ -64,17 +62,17 @@ namespace KaosesPartySizes.PartyTypes
 						bool flag8 = this._partyTemplate.StringId.Contains("mountain");
 						if (flag8)
 						{
-							bool flag9 = base.isBossParty() && ModSettings.Instance.mountainBossBanditsMultiplierEnabled;
+							bool flag9 = base.isBossParty() && KaosesPartySizesSettings.Instance.mountainBossBanditsMultiplierEnabled;
 							if (flag9)
 							{
-								base.processBanditBoss(ModSettings.Instance.mountainBossBanditMinMultiplier, ModSettings.Instance.mountainBossBanditMaxMultiplier);
+								base.processBanditBoss(KaosesPartySizesSettings.Instance.mountainBossBanditMinMultiplier, KaosesPartySizesSettings.Instance.mountainBossBanditMaxMultiplier);
 							}
 							else
 							{
-								bool flag10 = ModSettings.Instance.mountainBanditsMultiplierEnabled && !base.isBossParty();
+								bool flag10 = KaosesPartySizesSettings.Instance.mountainBanditsMultiplierEnabled && !base.isBossParty();
 								if (flag10)
 								{
-									base.processParties(ModSettings.Instance.mountainBanditMinMultiplier, ModSettings.Instance.mountainBanditMaxMultiplier);
+									base.processParties(KaosesPartySizesSettings.Instance.mountainBanditMinMultiplier, KaosesPartySizesSettings.Instance.mountainBanditMaxMultiplier);
 								}
 							}
 						}
@@ -83,17 +81,17 @@ namespace KaosesPartySizes.PartyTypes
 							bool flag11 = this._partyTemplate.StringId.Contains("desert");
 							if (flag11)
 							{
-								bool flag12 = base.isBossParty() && ModSettings.Instance.desertBossBanditsMultiplierEnabled;
+								bool flag12 = base.isBossParty() && KaosesPartySizesSettings.Instance.desertBossBanditsMultiplierEnabled;
 								if (flag12)
 								{
-									base.processBanditBoss(ModSettings.Instance.desertBossBanditMinMultiplier, ModSettings.Instance.desertBossBanditMaxMultiplier);
+									base.processBanditBoss(KaosesPartySizesSettings.Instance.desertBossBanditMinMultiplier, KaosesPartySizesSettings.Instance.desertBossBanditMaxMultiplier);
 								}
 								else
 								{
-									bool flag13 = ModSettings.Instance.desertBanditsMultiplierEnabled && !base.isBossParty();
+									bool flag13 = KaosesPartySizesSettings.Instance.desertBanditsMultiplierEnabled && !base.isBossParty();
 									if (flag13)
 									{
-										base.processParties(ModSettings.Instance.desertBanditMinMultiplier, ModSettings.Instance.desertBanditMaxMultiplier);
+										base.processParties(KaosesPartySizesSettings.Instance.desertBanditMinMultiplier, KaosesPartySizesSettings.Instance.desertBanditMaxMultiplier);
 									}
 								}
 							}
@@ -102,33 +100,33 @@ namespace KaosesPartySizes.PartyTypes
 								bool flag14 = this._partyTemplate.StringId.Contains("steppe");
 								if (flag14)
 								{
-									bool flag15 = base.isBossParty() && ModSettings.Instance.steppeBossBanditsMultiplierEnabled;
+									bool flag15 = base.isBossParty() && KaosesPartySizesSettings.Instance.steppeBossBanditsMultiplierEnabled;
 									if (flag15)
 									{
-										base.processBanditBoss(ModSettings.Instance.steppeBossBanditMinMultiplier, ModSettings.Instance.steppeBossBanditMaxMultiplier);
+										base.processBanditBoss(KaosesPartySizesSettings.Instance.steppeBossBanditMinMultiplier, KaosesPartySizesSettings.Instance.steppeBossBanditMaxMultiplier);
 									}
 									else
 									{
-										bool flag16 = ModSettings.Instance.steppeBanditsMultiplierEnabled && !base.isBossParty();
+										bool flag16 = KaosesPartySizesSettings.Instance.steppeBanditsMultiplierEnabled && !base.isBossParty();
 										if (flag16)
 										{
-											base.processParties(ModSettings.Instance.steppeBanditMinMultiplier, ModSettings.Instance.steppeBanditMaxMultiplier);
+											base.processParties(KaosesPartySizesSettings.Instance.steppeBanditMinMultiplier, KaosesPartySizesSettings.Instance.steppeBanditMaxMultiplier);
 										}
 									}
 								}
 								else
 								{
-									bool flag17 = base.isBossParty() && ModSettings.Instance.otherBanditsBossMultiplierEnabled;
+									bool flag17 = base.isBossParty() && KaosesPartySizesSettings.Instance.otherBanditsBossMultiplierEnabled;
 									if (flag17)
 									{
-										base.processBanditBoss(ModSettings.Instance.otherBanditsBossMinMultiplier, ModSettings.Instance.otherBanditsBossMaxMultiplier);
+										base.processBanditBoss(KaosesPartySizesSettings.Instance.otherBanditsBossMinMultiplier, KaosesPartySizesSettings.Instance.otherBanditsBossMaxMultiplier);
 									}
 									else
 									{
-										bool flag18 = ModSettings.Instance.otherBanditsMultiplierEnabled && !base.isBossParty();
+										bool flag18 = KaosesPartySizesSettings.Instance.otherBanditsMultiplierEnabled && !base.isBossParty();
 										if (flag18)
 										{
-											base.processParties(ModSettings.Instance.otherBanditsMinMultiplier, ModSettings.Instance.otherBanditsMaxMultiplier);
+											base.processParties(KaosesPartySizesSettings.Instance.otherBanditsMinMultiplier, KaosesPartySizesSettings.Instance.otherBanditsMaxMultiplier);
 										}
 									}
 								}

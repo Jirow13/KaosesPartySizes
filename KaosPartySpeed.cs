@@ -56,82 +56,82 @@ namespace KaosesPartySizes.Models
 			if (isActive)
 			{
 				bool partyTypeFound = false;
-				bool flag5 = mobileParty.StringId.Contains("looter") && ModSettings.Instance.looterSpeedReductiontEnabled;
+				bool flag5 = mobileParty.StringId.Contains("looter") && KaosesPartySizesSettings.Instance.looterSpeedReductiontEnabled;
 				if (flag5)
 				{
-					explainedNumber.Add(ModSettings.Instance.caravanSpeedReductionAmount, KaosPartySpeed._slowMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.caravanSpeedReductionAmount, KaosPartySpeed._slowMessage);
 					partyTypeFound = true;
 				}
 				bool flag6 = mobileParty.StringId.Contains("caravan");
 				if (flag6)
 				{
-					bool flag7 = mobileParty.StringId.Contains("elite") && ModSettings.Instance.eliteCaravanSpeedReductiontEnabled;
+					bool flag7 = mobileParty.StringId.Contains("elite") && KaosesPartySizesSettings.Instance.eliteCaravanSpeedReductiontEnabled;
 					if (flag7)
 					{
-						explainedNumber.Add(ModSettings.Instance.eliteCaravanSpeedReductionAmount, KaosPartySpeed._slowCaravansMessage);
+						explainedNumber.Add(KaosesPartySizesSettings.Instance.eliteCaravanSpeedReductionAmount, KaosPartySpeed._slowCaravansMessage);
 					}
 					else
 					{
-						bool caravanSpeedReductiontEnabled = ModSettings.Instance.caravanSpeedReductiontEnabled;
+						bool caravanSpeedReductiontEnabled = KaosesPartySizesSettings.Instance.caravanSpeedReductiontEnabled;
 						if (caravanSpeedReductiontEnabled)
 						{
-							explainedNumber.Add(ModSettings.Instance.caravanSpeedReductionAmount, KaosPartySpeed._slowCaravansMessage);
+							explainedNumber.Add(KaosesPartySizesSettings.Instance.caravanSpeedReductionAmount, KaosPartySpeed._slowCaravansMessage);
 						}
 					}
 					partyTypeFound = true;
 				}
-				bool flag8 = mobileParty.StringId.Contains("desert") && ModSettings.Instance.desertSpeedReductiontEnabled;
+				bool flag8 = mobileParty.StringId.Contains("desert") && KaosesPartySizesSettings.Instance.desertSpeedReductiontEnabled;
 				if (flag8)
 				{
-					explainedNumber.Add(ModSettings.Instance.desertSpeedReductionAmount, KaosPartySpeed._slowMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.desertSpeedReductionAmount, KaosPartySpeed._slowMessage);
 					partyTypeFound = true;
 				}
-				bool flag9 = mobileParty.StringId.Contains("forest") && ModSettings.Instance.forestSpeedReductiontEnabled;
+				bool flag9 = mobileParty.StringId.Contains("forest") && KaosesPartySizesSettings.Instance.forestSpeedReductiontEnabled;
 				if (flag9)
 				{
-					explainedNumber.Add(ModSettings.Instance.forestSpeedReductionAmount, KaosPartySpeed._slowMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.forestSpeedReductionAmount, KaosPartySpeed._slowMessage);
 					partyTypeFound = true;
 				}
-				bool flag10 = mobileParty.StringId.Contains("mountain") && ModSettings.Instance.mountainSpeedReductiontEnabled;
+				bool flag10 = mobileParty.StringId.Contains("mountain") && KaosesPartySizesSettings.Instance.mountainSpeedReductiontEnabled;
 				if (flag10)
 				{
-					explainedNumber.Add(ModSettings.Instance.mountainSpeedReductionAmount, KaosPartySpeed._slowMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.mountainSpeedReductionAmount, KaosPartySpeed._slowMessage);
 					partyTypeFound = true;
 				}
-				bool flag11 = mobileParty.StringId.Contains("raider") && ModSettings.Instance.seaRaiderSpeedReductiontEnabled;
+				bool flag11 = mobileParty.StringId.Contains("raider") && KaosesPartySizesSettings.Instance.seaRaiderSpeedReductiontEnabled;
 				if (flag11)
 				{
-					explainedNumber.Add(ModSettings.Instance.seaRaiderSpeedReductionAmount, KaosPartySpeed._slowMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.seaRaiderSpeedReductionAmount, KaosPartySpeed._slowMessage);
 					partyTypeFound = true;
 				}
-				bool flag12 = mobileParty.StringId.Contains("steppe") && ModSettings.Instance.steppeSpeedReductiontEnabled;
+				bool flag12 = mobileParty.StringId.Contains("steppe") && KaosesPartySizesSettings.Instance.steppeSpeedReductiontEnabled;
 				if (flag12)
 				{
-					explainedNumber.Add(ModSettings.Instance.steppeSpeedReductionAmount, KaosPartySpeed._slowMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.steppeSpeedReductionAmount, KaosPartySpeed._slowMessage);
 					partyTypeFound = true;
 				}
-				bool flag13 = mobileParty.StringId.Contains("villager") && ModSettings.Instance.villagerSpeedReductiontEnabled;
+				bool flag13 = mobileParty.StringId.Contains("villager") && KaosesPartySizesSettings.Instance.villagerSpeedReductiontEnabled;
 				if (flag13)
 				{
-					explainedNumber.Add(ModSettings.Instance.villagerSpeedReductionAmount, KaosPartySpeed._slowVillagerMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.villagerSpeedReductionAmount, KaosPartySpeed._slowVillagerMessage);
 					partyTypeFound = true;
 				}
-				bool flag14 = mobileParty.StringId.Contains("lord_") && ModSettings.Instance.kingdomSpeedReductiontEnabled;
+				bool flag14 = mobileParty.StringId.Contains("lord_") && KaosesPartySizesSettings.Instance.kingdomSpeedReductiontEnabled;
 				if (flag14)
 				{
-					explainedNumber.Add(ModSettings.Instance.kingdomSpeedReductionAmount, KaosPartySpeed._slowKingdomMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.kingdomSpeedReductionAmount, KaosPartySpeed._slowKingdomMessage);
 					partyTypeFound = true;
 				}
-				bool flag15 = mobileParty.StringId.Contains("troops_of") && ModSettings.Instance.otherKingdomSpeedReductionEnabled;
+				bool flag15 = mobileParty.StringId.Contains("troops_of") && KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionEnabled;
 				if (flag15)
 				{
-					explainedNumber.Add(ModSettings.Instance.otherKingdomSpeedReductionAmount, KaosPartySpeed._slowMinorMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionAmount, KaosPartySpeed._slowMinorMessage);
 					partyTypeFound = true;
 				}
-				bool flag16 = mobileParty.IsMainParty && ModSettings.Instance.playerSpeedReductiontEnabled;
+				bool flag16 = mobileParty.IsMainParty && KaosesPartySizesSettings.Instance.playerSpeedReductiontEnabled;
 				if (flag16)
 				{
-					explainedNumber.Add(ModSettings.Instance.playerSpeedReductionAmount, KaosPartySpeed._slowPlayerMessage);
+					explainedNumber.Add(KaosesPartySizesSettings.Instance.playerSpeedReductionAmount, KaosPartySpeed._slowPlayerMessage);
 					partyTypeFound = true;
 				}
 				bool flag17 = !mobileParty.IsMainParty && !mobileParty.StringId.Contains("player_") && !mobileParty.StringId.Contains("militias_") && !mobileParty.StringId.Contains("garrison_");
@@ -146,24 +146,24 @@ namespace KaosesPartySizes.Models
 						{
 							Clan clan = hero.Clan;
 							Clan playerClan = Clan.PlayerClan;
-							bool flag20 = clan == playerClan && ModSettings.Instance.playerCompanionSpeedReductiontEnabled;
+							bool flag20 = clan == playerClan && KaosesPartySizesSettings.Instance.playerCompanionSpeedReductiontEnabled;
 							if (flag20)
 							{
-								explainedNumber.Add(ModSettings.Instance.playerCompanionSpeedReductionAmount, KaosPartySpeed._slowPlayerClanMessage);
+								explainedNumber.Add(KaosesPartySizesSettings.Instance.playerCompanionSpeedReductionAmount, KaosPartySpeed._slowPlayerClanMessage);
 							}
 							else
 							{
-								bool otherKingdomSpeedReductionEnabled = ModSettings.Instance.otherKingdomSpeedReductionEnabled;
+								bool otherKingdomSpeedReductionEnabled = KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionEnabled;
 								if (otherKingdomSpeedReductionEnabled)
 								{
-									explainedNumber.Add(ModSettings.Instance.otherKingdomSpeedReductionAmount, KaosPartySpeed._slowMinorMessage);
+									explainedNumber.Add(KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionAmount, KaosPartySpeed._slowMinorMessage);
 								}
 							}
 						}
 					}
 				}
 			}
-			explainedNumber.LimitMin(ModSettings.Instance.kaosesmininumSpeedAmount);
+			explainedNumber.LimitMin(KaosesPartySizesSettings.Instance.kaosesmininumSpeedAmount);
 			return explainedNumber.ResultNumber;
 		}
 

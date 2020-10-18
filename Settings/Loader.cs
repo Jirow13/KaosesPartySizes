@@ -32,13 +32,13 @@ namespace KaosesPartySizes.Settings
 			try
 			{
 				Logging.lm("Config File FOUND Loading object");
-				ModSettings settings = new ModSettings();
-				settings = JsonConvert.DeserializeObject<ModSettings>(File.ReadAllText("..\\\\..\\\\Modules\\\\KaosesPartySizes\\config.json"));
+				KaosesPartySizesSettings settings = new KaosesPartySizesSettings();
+				settings = JsonConvert.DeserializeObject<KaosesPartySizesSettings>(File.ReadAllText("..\\\\..\\\\Modules\\\\KaosesPartySizes\\config.json"));
 				bool flag3 = !Loader.isModlibLoaded(settings.bOverRideModLibSettings);
 				if (flag3)
 				{
 					Logging.lm("No Modlib or overriding Modlib  all values set from config");
-					ModSettings.SetSettings(settings);
+					KaosesPartySizesSettings.SetSettings(settings);
 				}
 				else
 				{

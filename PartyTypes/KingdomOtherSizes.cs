@@ -12,17 +12,17 @@ namespace KaosesPartySizes.PartyTypes
 		public KingdomOtherSizes(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("kingdom_hero_ai") && ModSettings.Instance.otherKingdomMultiplierEnabled;
+			bool flag = this._partyTemplate.StringId.Contains("kingdom_hero_ai") && KaosesPartySizesSettings.Instance.otherKingdomMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(ModSettings.Instance.otherKingdomMinMultiplier, ModSettings.Instance.otherKingdomMaxMultiplier);
+				base.processParties(KaosesPartySizesSettings.Instance.otherKingdomMinMultiplier, KaosesPartySizesSettings.Instance.otherKingdomMaxMultiplier);
 			}
 			else
 			{
-				bool flag2 = this._partyTemplate.StringId.Contains("kingdom_hero_minor") && ModSettings.Instance.otherMinorFactionsMultiplierEnabled;
+				bool flag2 = this._partyTemplate.StringId.Contains("kingdom_hero_minor") && KaosesPartySizesSettings.Instance.otherMinorFactionsMultiplierEnabled;
 				if (flag2)
 				{
-					base.processParties(ModSettings.Instance.otherMinorFactionsMinMultiplier, ModSettings.Instance.otherMinorFactionsMaxMultiplier);
+					base.processParties(KaosesPartySizesSettings.Instance.otherMinorFactionsMinMultiplier, KaosesPartySizesSettings.Instance.otherMinorFactionsMaxMultiplier);
 				}
 			}
 		}
