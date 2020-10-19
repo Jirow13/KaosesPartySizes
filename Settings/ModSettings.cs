@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Xml.Serialization;
+//using System.Xml.Serialization;
 using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Settings.Base.Global;
@@ -38,7 +38,8 @@ namespace KaosesPartySizes.Settings
 
 		public bool bLogToFile { get; set; } = false;
 
-//		public bool bOverRideModLibSettings { get; set; } = false;
+		// Not needed as both the ModLib and Json config files have been replaced by MCM.
+		// public bool bOverRideModLibSettings { get; set; } = false;
 
 		public string modVersionOfConfig { get; set; } = "0.1.11";
 
@@ -57,35 +58,40 @@ namespace KaosesPartySizes.Settings
 		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
 		public int lootersMaximumNoLooterParties { get; set; } = 300;
 
-		
+
+		[SettingPropertyBool("Hideout Tweaks Enabled", Order = 1, RequireRestart = false, HintText = "Enable tweaking hideout populations."),
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = true)]
+		public bool EnableHideoutTweaks { get; set; } = false;
+
 		[SettingPropertyInteger("Number of initial Hideouts", 1, 10, Order = 1, RequireRestart = false, HintText = "Number of initial Bandit Hideouts Per Faction Native=3"),
-		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
-		public int numberOfInitialHideouts { get; set; } = 3;
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = false)]
+		public int NumberOfInitialHideoutsAtEachBanditFaction { get; set; } = 3;
 
 		
 		[SettingPropertyInteger("Maximum number of Hideouts per bandit Faction", 1, 20, Order = 1, RequireRestart = false, HintText = "Maximum number of Hideouts per bandit faction Native=10"),
-		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
-		public int maximumHideoutsAtEachBanditFaction { get; set; } = 10;
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = false)]
+		public int NumberOfMaximumHideoutsAtEachBanditFaction { get; set; } = 10;
 
 		
 		[SettingPropertyInteger("Maximum number of Parties Per Hideout", 1, 30, Order = 1, RequireRestart = false, HintText = "Maximum number of Parties Around each Hideout for each Bandit faction Native=8"),
-		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
-		public int maximumBanditPartiesAroundEachHideout { get; set; } = 8;
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = false)]
+		public int NumberOfMaximumBanditPartiesAroundEachHideout { get; set; } = 8;
 
 		
 		[SettingPropertyInteger("Maximum number of Parties in a Hideout", 1, 10, Order = 1, RequireRestart = false, HintText = "Maximum number of Parties In a Hideout for each faction Native=4"),
-		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
-		public int maximumBanditPartiesInEachHideout { get; set; } = 4;
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = false)]
+		public int NumberOfMaximumBanditPartiesInEachHideout { get; set; } = 4;
 
 
 		[SettingPropertyInteger("Minimum number of Parties in a Hideout to infest it", 1, 10, Order = 1, RequireRestart = false, HintText = "Minimum number of Parties in a Hideout to infest it Native=2"),
-		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
-		public int minimumBanditPartiesInAHideoutToInfestIt { get; set; } = 2;
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = false)]
+		public int NumberOfMinimumBanditPartiesInAHideoutToInfestIt { get; set; } = 2;
 
+/*		Jiros: Removed this as it's duplicated in Bannerlord Tweaks. Would have to be added to Harmony patch if it's to be enabled.
 		[SettingPropertyInteger("PlayerMaximumTroopCountForHideoutMission", 1, 90, Order = 1, RequireRestart = false, HintText = "PlayerMaximumTroopCountForHideoutMission"),
-		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population", IsMainToggle = false)]
+		SettingPropertyGroup("KaosesPartySizesSettings/Bandits Population/Hideouts", IsMainToggle = false)]
 		public int PlayerMaximumTroopCountForHideoutMission { get; set; } = 20;
-
+*/
 
 		[SettingPropertyFloatingInteger("Looters minimum Multiplier", 0.1f, 10f, Order = 1, RequireRestart = false, HintText = "Multiply looters minimum party sizes"),
 		SettingPropertyGroup("Native/Bandits/Looters", IsMainToggle = false)]

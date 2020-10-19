@@ -6,18 +6,17 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 
+// Jiros ToDo: Convert this to Harmony so updates to DefaultPartySpeedCalculatingModel don't wreck the mod.
+
 namespace KaosesPartySizes.Models
 {
-	// Token: 0x02000011 RID: 17
 	internal class KaosPartySpeed : DefaultPartySpeedCalculatingModel
 	{
-		// Token: 0x06000137 RID: 311 RVA: 0x000041F0 File Offset: 0x000023F0
 		public override float CalculatePureSpeed(MobileParty mobileParty, StatExplainer explanation, int additionalTroopOnFootCount = 0, int additionalTroopOnHorseCount = 0)
 		{
 			return base.CalculatePureSpeed(mobileParty, explanation, additionalTroopOnFootCount, additionalTroopOnHorseCount);
 		}
 
-		// Token: 0x06000138 RID: 312 RVA: 0x00004210 File Offset: 0x00002410
 		public override float CalculateFinalSpeed(MobileParty mobileParty, float baseSpeed, StatExplainer explanation)
 		{
 			PartyBase party = mobileParty.Party;
@@ -167,40 +166,28 @@ namespace KaosesPartySizes.Models
 			return explainedNumber.ResultNumber;
 		}
 
-		// Token: 0x04000090 RID: 144
 		private static readonly TextObject _movingInForest = new TextObject("{=rTFaZCdY}Forest", null);
 
-		// Token: 0x04000091 RID: 145
 		private static readonly TextObject _fordEffect = new TextObject("{=NT5fwUuJ}Fording", null);
 
-		// Token: 0x04000092 RID: 146
 		private static readonly TextObject _night = new TextObject("{=fAxjyMt5}Night", null);
 
-		// Token: 0x04000093 RID: 147
 		private static readonly TextObject _snow = new TextObject("{=vLjgcdgB}Snow", null);
 
-		// Token: 0x04000094 RID: 148
 		private static readonly TextObject _sturgiaSnowBonus = new TextObject("{=0VfEGekD}Sturgia Snow Bonus", null);
 
-		// Token: 0x04000095 RID: 149
 		private static readonly TextObject _slowMessage = new TextObject("{=1ZiDIanZ}Kaoses Bandits", null);
 
-		// Token: 0x04000096 RID: 150
 		private static readonly TextObject _slowPlayerMessage = new TextObject("{=1ZiDIa2Z}Kaoses Player", null);
 
-		// Token: 0x04000097 RID: 151
 		private static readonly TextObject _slowPlayerClanMessage = new TextObject("{=1ZiDIa6Z}Player Clan", null);
 
-		// Token: 0x04000098 RID: 152
 		private static readonly TextObject _slowMinorMessage = new TextObject("{=1ZiDIa4Z}Kaoses Minor", null);
 
-		// Token: 0x04000099 RID: 153
 		private static readonly TextObject _slowKingdomMessage = new TextObject("{=1ZiDIa3Z}Kaoses Kingdom", null);
 
-		// Token: 0x0400009A RID: 154
 		private static readonly TextObject _slowVillagerMessage = new TextObject("{=1ZiDIa4Z}Kaoses Villagers", null);
 
-		// Token: 0x0400009B RID: 155
 		private static readonly TextObject _slowCaravansMessage = new TextObject("{=1ZiDIa5Z}Kaoses Caravans", null);
 	}
 }

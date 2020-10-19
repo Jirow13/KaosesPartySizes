@@ -97,11 +97,11 @@
     <Compile Include="PartyTypes\MiscSizes.cs" />
     <Compile Include="PartyTypes\PlayerSizes.cs" />
     <Compile Include="PartyTypes\BanditSizes.cs" />
+    <Compile Include="Patches\DefaultBanditDensityModelPatch.cs" />
     <Compile Include="Settings\ModSettings.cs" />
     <Compile Include="Objects\PartyTemplateSizes.cs" />
     <Compile Include="Objects\BaseTemplateSizes.cs" />
     <Compile Include="KaosPartySpeed.cs" />
-    <Compile Include="KaosesBanditDensityModel.cs" />
     <Compile Include="KaosesPartiesBehaviour.cs" />
     <Compile Include="KaosesPartySizesSubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

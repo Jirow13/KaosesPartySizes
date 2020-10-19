@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Switched to using Harmony to prevent any model updates/additions from breaking the mod. 
+ * New version is DefaultBanditDensityModelPatch.cs 
+
+
+using System;
 using KaosesPartySizes.Settings;
 using TaleWorlds.CampaignSystem;
 
@@ -23,7 +27,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.minimumBanditPartiesInAHideoutToInfestIt;
+				return KaosesPartySizesSettings.Instance.NumberOfMinimumBanditPartiesInAHideoutToInfestIt;
 			}
 		}
 
@@ -33,7 +37,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.maximumBanditPartiesInEachHideout;
+				return KaosesPartySizesSettings.Instance.NumberOfMaximumBanditPartiesInEachHideout;
 			}
 		}
 
@@ -43,7 +47,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.maximumBanditPartiesAroundEachHideout;
+				return KaosesPartySizesSettings.Instance.NumberOfMaximumBanditPartiesAroundEachHideout;
 			}
 		}
 
@@ -53,7 +57,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.maximumHideoutsAtEachBanditFaction;
+				return KaosesPartySizesSettings.Instance.NumberOfMaximumHideoutsAtEachBanditFaction;
 			}
 		}
 
@@ -63,7 +67,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.numberOfInitialHideouts;
+				return KaosesPartySizesSettings.Instance.NumberOfInitialHideoutsAtEachBanditFaction;
 			}
 		}
 
@@ -72,6 +76,7 @@ namespace KaosesPartySizes.Models
 			get;
 		}
 
+		
 		public override int PlayerMaximumTroopCountForHideoutMission
 		{
 			get
@@ -82,7 +87,10 @@ namespace KaosesPartySizes.Models
 
 		public override float SpawnPercentageForFirstFightInHideoutMission
 		{
-			get;
+			get
+			{
+				return 0.75f;
+			}
 		}
 
 		public override int NumberOfMaximumTroopCountForFirstFightInHideout
@@ -102,3 +110,5 @@ namespace KaosesPartySizes.Models
 		}
 	}
 }
+
+*/

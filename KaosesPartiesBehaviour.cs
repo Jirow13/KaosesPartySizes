@@ -9,10 +9,8 @@ using TaleWorlds.ObjectSystem;
 
 namespace KaosesPartySizes.Behaviours
 {
-	// Token: 0x02000012 RID: 18
 	internal class KaosesPartiesBehaviour : CampaignBehaviorBase
 	{
-		// Token: 0x0600013B RID: 315 RVA: 0x00004808 File Offset: 0x00002A08
 		public override void RegisterEvents()
 		{
 			try
@@ -25,12 +23,10 @@ namespace KaosesPartySizes.Behaviours
 			}
 		}
 
-		// Token: 0x0600013C RID: 316 RVA: 0x00003CAA File Offset: 0x00001EAA
 		public override void SyncData(IDataStore dataStore)
 		{
 		}
 
-		// Token: 0x0600013D RID: 317 RVA: 0x00004860 File Offset: 0x00002A60
 		private void OnDailyTick()
 		{
 			try
@@ -105,7 +101,6 @@ namespace KaosesPartySizes.Behaviours
 			}
 		}
 
-		// Token: 0x0400009C RID: 156
 		public Dictionary<string, int> clanPartyCount = new Dictionary<string, int>();
 	}
 }

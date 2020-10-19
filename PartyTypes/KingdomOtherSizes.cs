@@ -5,10 +5,8 @@ using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
 {
-	// Token: 0x0200000A RID: 10
 	internal class KingdomOtherSizes : BaseTemplateSizes
 	{
-		// Token: 0x06000120 RID: 288 RVA: 0x000038C4 File Offset: 0x00001AC4
 		public KingdomOtherSizes(PartyTemplateObject pt)
 		{
 			this._partyTemplate = pt;
