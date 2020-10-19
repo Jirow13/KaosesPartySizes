@@ -96,13 +96,13 @@ namespace KaosesPartySizes.Patches
         }
     }
 
-    /*
+    /* Duplicates Bannerlord Tweaks
     [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_PlayerMaximumTroopCountForHideoutMission")]
     public class PlayerMaximumTroopCountForHideoutMissionPatch
     {
         static bool Prefix(ref int __result)
         {
-            __result = Math.Min(KaosesPartySizesSettings.Instance.PlayerMaximumTroopCountForHideoutMission, 80);
+            __result = Math.Min(KaosesPartySizesSettings.Instance.PlayerMaximumTroopCountForHideoutMission, 90);
             return false;
         }
 

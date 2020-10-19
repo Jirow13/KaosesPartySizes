@@ -14,7 +14,7 @@ namespace KaosesPartySizes.Settings
 		public override string FolderName => "KaosesPartySizes";
         public override string Format => "json";
 
-		/*
+		/* May no be necessary anymore.
 		public static KaosesPartySizesSettings Instance
 		{
 			get
@@ -37,9 +37,6 @@ namespace KaosesPartySizes.Settings
 		public bool bIsDebug { get; set; } = false;
 
 		public bool bLogToFile { get; set; } = false;
-
-		// Not needed as both the ModLib and Json config files have been replaced by MCM.
-		// public bool bOverRideModLibSettings { get; set; } = false;
 
 		public string modVersionOfConfig { get; set; } = "0.1.11";
 
