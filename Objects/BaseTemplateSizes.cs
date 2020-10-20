@@ -14,17 +14,17 @@ namespace KaosesPartySizes.Objects
 			//if (flag)
 			if (flag && this._partyTemplate.Stacks != null)
 			{
-				Ux.ShowMessageError("this._partyTemplate = " + this._partyTemplate.StringId);
-				Ux.ShowMessageError("Stacks.Count = " + this._partyTemplate.Stacks.Count);
+				Ux.ShowMessageDebug("this._partyTemplate = " + this._partyTemplate.StringId);
+				Ux.ShowMessageDebug("Stacks.Count = " + this._partyTemplate.Stacks.Count);
 				for (int i = 0; i < this._partyTemplate.Stacks.Count; i++)
 				{
-					Ux.ShowMessageError("Starting i = "+i);
+					Ux.ShowMessageDebug("Starting i = "+i);
 					this._partyTemplate.Stacks[i] = this.processStacks(this._partyTemplate.Stacks[i], minMultiplier, maxMultiplier);
 				}
 			}
 			else
 			{
-				Ux.ShowMessageError("Kaoses Parties processParties invalid Party template or no stacks");
+				Ux.ShowMessageDebug("Kaoses Parties processParties invalid Party template or no stacks");
 			}
 		}
 

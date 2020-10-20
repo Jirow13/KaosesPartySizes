@@ -25,11 +25,11 @@ namespace KaosesPartySizes
 					{
 						harmony = new Harmony("mod.partysizes.kaoses");
 						harmony.PatchAll();
-						Ux.ShowMessageError($"Harmony Loaded: Kaoses Party Sizes");
+						Ux.ShowMessageDebug($"Harmony Loaded: Kaoses Party Sizes");
 					}
 					catch (Exception ex)
 					{
-						Ux.ShowMessageError($"Error Initialising Bannerlord Tweaks:\n\n{ex.ToString()}");
+						Ux.ShowMessageError($"Error Initialising Kaoses Party Sizes:\n\n{ex.ToString()}");
 					}
 				}
 			}
