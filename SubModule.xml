@@ -1,7 +1,7 @@
 ﻿<Module>
-	<Name value="Kaoses Party Sizes"/>
+	<Name value="Kaoses Party Sizes - Jiro's Revival"/>
 	<Id value="KaosesPartySizes"/>
-	<Version value="v0.1.11"/>
+	<Version value="v1.5.3.0"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
 	<DependedModules>

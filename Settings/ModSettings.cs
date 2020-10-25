@@ -1,5 +1,4 @@
 ﻿using System;
-//using System.Xml.Serialization;
 using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Settings.Base.Global;
@@ -14,7 +13,7 @@ namespace KaosesPartySizes.Settings
 		public override string FolderName => "KaosesPartySizes";
         public override string Format => "json";
 
-		/* May no be necessary anymore.
+		/* May not be necessary w/out ModLib.
 		public static KaosesPartySizesSettings Instance
 		{
 			get
@@ -38,7 +37,7 @@ namespace KaosesPartySizes.Settings
 
 		public bool bLogToFile { get; set; } = false;
 
-		public string modVersionOfConfig { get; set; } = "0.1.11";
+		public string modVersionOfConfig { get; set; } = "1.5.3.0";
 
 		
 		[SettingPropertyBool("Troop list creation Enabled", Order = 1, RequireRestart = false, HintText = "Enables creating a print out of all parties and unit sizes"),

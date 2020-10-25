@@ -18,7 +18,7 @@ namespace KaosesPartySizes
 			private static Harmony harmony = null;
 			protected override void OnBeforeInitialModuleScreenSetAsRoot()
 			{
-				Ux.ShowMessageInfo("Kaoses Party Sizes 0.1.11 is now enabled.");
+				Ux.ShowMessageInfo("Kaoses Party Sizes is now enabled.");
 				if (harmony == null)
 				{
 					try
