@@ -1,6 +1,7 @@
 ﻿using System;
 using KaosesPartySizes.Objects;
 using KaosesPartySizes.Settings;
+using KaosesPartySizes.Utils;
 using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
@@ -9,60 +10,67 @@ namespace KaosesPartySizes.PartyTypes
 	{
 		public KingdomSizes(PartyTemplateObject pt)
 		{
-			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("empire") && KaosesPartySizesSettings.Instance.empireKingdomMultiplierEnabled;
+			if (!(KaosesPartySizesSettings.Instance is { } instance))
+            {
+				Ux.ShowMessageError("Kaoses Party sizes: Error setting 'Kingdom Party' Sizes!");
+				return;
+			}
+				
+
+			this.PartyTemplate = pt;
+			bool flag = this.PartyTemplate.StringId.Contains("empire") && instance.EmpireKingdomMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(KaosesPartySizesSettings.Instance.empireKingdomMinMultiplier, KaosesPartySizesSettings.Instance.empireKingdomMaxMultiplier);
+				base.ProcessParties(instance.EmpireKingdomMinMultiplier, instance.EmpireKingdomMaxMultiplier);
 			}
 			else
 			{
-				bool flag2 = this._partyTemplate.StringId.Contains("aserai") && KaosesPartySizesSettings.Instance.aseraiKingdomMultiplierEnabled;
+				bool flag2 = this.PartyTemplate.StringId.Contains("aserai") && instance.AseraiKingdomMultiplierEnabled;
 				if (flag2)
 				{
-					base.processParties(KaosesPartySizesSettings.Instance.aseraiKingdomMinMultiplier, KaosesPartySizesSettings.Instance.aseraiKingdomMaxMultiplier);
+					base.ProcessParties(instance.AseraiKingdomMinMultiplier, instance.AseraiKingdomMaxMultiplier);
 				}
 				else
 				{
-					bool flag3 = this._partyTemplate.StringId.Contains("sturgia") && KaosesPartySizesSettings.Instance.sturgiaKingdomMultiplierEnabled;
+					bool flag3 = this.PartyTemplate.StringId.Contains("sturgia") && instance.SturgiaKingdomMultiplierEnabled;
 					if (flag3)
 					{
-						base.processParties(KaosesPartySizesSettings.Instance.sturgiaKingdomMinMultiplier, KaosesPartySizesSettings.Instance.sturgiaKingdomMaxMultiplier);
+						base.ProcessParties(instance.SturgiaKingdomMinMultiplier, instance.SturgiaKingdomMaxMultiplier);
 					}
 					else
 					{
-						bool flag4 = this._partyTemplate.StringId.Contains("vlandia") && KaosesPartySizesSettings.Instance.vlandiaKingdomMultiplierEnabled;
+						bool flag4 = this.PartyTemplate.StringId.Contains("vlandia") && instance.VlandiaKingdomMultiplierEnabled;
 						if (flag4)
 						{
-							base.processParties(KaosesPartySizesSettings.Instance.vlandiaKingdomMinMultiplier, KaosesPartySizesSettings.Instance.vlandiaKingdomMaxMultiplier);
+							base.ProcessParties(instance.VlandiaKingdomMinMultiplier, instance.VlandiaKingdomMaxMultiplier);
 						}
 						else
 						{
-							bool flag5 = this._partyTemplate.StringId.Contains("battania") && KaosesPartySizesSettings.Instance.battaniaKingdomMultiplierEnabled;
+							bool flag5 = this.PartyTemplate.StringId.Contains("battania") && instance.BattaniaKingdomMultiplierEnabled;
 							if (flag5)
 							{
-								base.processParties(KaosesPartySizesSettings.Instance.battaniaKingdomMinMultiplier, KaosesPartySizesSettings.Instance.battaniaKingdomMaxMultiplier);
+								base.ProcessParties(instance.BattaniaKingdomMinMultiplier, instance.BattaniaKingdomMaxMultiplier);
 							}
 							else
 							{
-								bool flag6 = this._partyTemplate.StringId.Contains("khuzait") && KaosesPartySizesSettings.Instance.khuzaitKingdomMultiplierEnabled;
+								bool flag6 = this.PartyTemplate.StringId.Contains("khuzait") && instance.KhuzaitKingdomMultiplierEnabled;
 								if (flag6)
 								{
-									base.processParties(KaosesPartySizesSettings.Instance.khuzaitKingdomMinMultiplier, KaosesPartySizesSettings.Instance.khuzaitKingdomMaxMultiplier);
+									base.ProcessParties(instance.KhuzaitKingdomMinMultiplier, instance.KhuzaitKingdomMaxMultiplier);
 								}
 								else
 								{
-									bool flag7 = KaosesPartySizesSettings.Instance.minorFactionsMultiplierEnabled && !this._partyTemplate.StringId.Contains("cs_");
+									bool flag7 = instance.MinorFactionsMultiplierEnabled && !this.PartyTemplate.StringId.Contains("cs_");
 									if (flag7)
 									{
-										base.processParties(KaosesPartySizesSettings.Instance.minorFactionsMinMultiplier, KaosesPartySizesSettings.Instance.minorFactionsMaxMultiplier);
+										base.ProcessParties(instance.MinorFactionsMinMultiplier, instance.MinorFactionsMaxMultiplier);
 									}
 									else
 									{
-										bool flag8 = this._partyTemplate.StringId.Contains("cs_");
+										bool flag8 = this.PartyTemplate.StringId.Contains("cs_");
 										if (flag8)
 										{
-											new csSizes(pt);
+											new CSSizes(pt);
 										}
 									}
 								}

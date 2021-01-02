@@ -5,15 +5,14 @@ using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
 {
-	internal class csSizes : BaseTemplateSizes
+	internal class CSSizes : BaseTemplateSizes
 	{
-		public csSizes(PartyTemplateObject pt)
+		public CSSizes(PartyTemplateObject pt)
 		{
-			this._partyTemplate = pt;
-			bool csFactionsMultiplierEnabled = KaosesPartySizesSettings.Instance.csFactionsMultiplierEnabled;
-			if (csFactionsMultiplierEnabled == true)
+			PartyTemplate = pt;
+			if (KaosesPartySizesSettings.Instance is { } instance && instance.CSFactionsMultiplierEnabled)
 			{
-				base.processParties(KaosesPartySizesSettings.Instance.csFactionsMinMultiplier, KaosesPartySizesSettings.Instance.csFactionsMaxMultiplier);
+				base.ProcessParties(instance.CSFactionsMinMultiplier, instance.CSFactionsMaxMultiplier);
 			}
 		}
 	}

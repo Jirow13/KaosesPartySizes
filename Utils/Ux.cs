@@ -13,29 +13,29 @@ namespace KaosesPartySizes.Utils
 			if (printToLog)
 			{
 				Logging logger = new Logging("..\\\\..\\\\Modules\\\\KaosesPartySizes\\KaosLog.txt");
-				logger.logString(message);
+				logger.LogString(message);
 			}
 		}
 
 		public static void ShowMessageInfo(string message)
 		{
-			Ux.ShowMessage(message, Color.ConvertStringToColor("#42FF00FF"), KaosesPartySizesSettings.Instance.bLogToFile);
+			if (KaosesPartySizesSettings.Instance is { } instance)
+				Ux.ShowMessage(message, Color.ConvertStringToColor("#42FF00FF"), instance.BLogToFile);
 		}
 
 		public static void ShowMessageDebug(string message)
 		{
-			bool bIsDebug = KaosesPartySizesSettings.Instance.bIsDebug;
-			if (bIsDebug)
+			if (KaosesPartySizesSettings.Instance is { } instance && instance.BIsDebug)
 			{
 				Ux.ShowMessage(message, Color.ConvertStringToColor("#E6FF00FF"), false);
-				Logging.lm(message);
+				Logging.Lm(message);
 			}
 		}
 
 		public static void ShowMessageError(string message)
 		{
 			Ux.ShowMessage(message, Color.ConvertStringToColor("#FF000000"), true);
-			Logging.lm(message);
+			Logging.Lm(message);
 		}
 	}
 }

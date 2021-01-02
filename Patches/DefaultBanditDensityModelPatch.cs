@@ -11,14 +11,13 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = KaosesPartySizesSettings.Instance.lootersMaximumNoLooterParties;
+            if (!(KaosesPartySizesSettings.Instance is { } instance))
+                return true;
+            __result = instance.LootersMaximumNoLooterParties;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
-        }
+        static bool Prepare() => KaosesPartySizesSettings.Instance is { } instance && instance.EnableHideoutTweaks;
     }
 
     [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_NumberOfMinimumBanditPartiesInAHideoutToInfestIt")]
@@ -26,14 +25,13 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = KaosesPartySizesSettings.Instance.NumberOfMinimumBanditPartiesInAHideoutToInfestIt;
+            if (!(KaosesPartySizesSettings.Instance is { } instance))
+                return true;
+            __result = instance.NumberOfMinimumBanditPartiesInAHideoutToInfestIt;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
-        }
+        static bool Prepare() => KaosesPartySizesSettings.Instance is { } instance && instance.EnableHideoutTweaks;
     }
 
     [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_NumberOfMaximumBanditPartiesInEachHideout")]
@@ -41,14 +39,14 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = KaosesPartySizesSettings.Instance.NumberOfMaximumBanditPartiesInEachHideout;
+            if (!(KaosesPartySizesSettings.Instance is { } instance))
+                return true;
+            __result = instance.NumberOfMaximumBanditPartiesInEachHideout;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
-        }
+        static bool Prepare() => KaosesPartySizesSettings.Instance is { } instance && instance.EnableHideoutTweaks;
+
     }
 
     [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_NumberOfMaximumBanditPartiesAroundEachHideout")]
@@ -56,14 +54,13 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = KaosesPartySizesSettings.Instance.NumberOfMaximumBanditPartiesAroundEachHideout;
+            if (!(KaosesPartySizesSettings.Instance is { } instance))
+                return true;
+            __result = instance.NumberOfMaximumBanditPartiesAroundEachHideout;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
-        }
+        static bool Prepare() => KaosesPartySizesSettings.Instance is { } instance && instance.EnableHideoutTweaks;
     }
 
     [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_NumberOfMaximumHideoutsAtEachBanditFaction")]
@@ -71,14 +68,13 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = KaosesPartySizesSettings.Instance.NumberOfMaximumHideoutsAtEachBanditFaction;
+            if (!(KaosesPartySizesSettings.Instance is { } instance))
+                return true;
+            __result = instance.NumberOfMaximumHideoutsAtEachBanditFaction;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
-        }
+        static bool Prepare() => KaosesPartySizesSettings.Instance is { } instance && instance.EnableHideoutTweaks;
     }
 
     [HarmonyPatch(typeof(DefaultBanditDensityModel), "get_NumberOfInitialHideoutsAtEachBanditFaction")]
@@ -86,14 +82,13 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = KaosesPartySizesSettings.Instance.NumberOfInitialHideoutsAtEachBanditFaction;
+            if (!(KaosesPartySizesSettings.Instance is { } instance))
+                return true;
+            __result = instance.NumberOfInitialHideoutsAtEachBanditFaction;
             return false;
         }
 
-        static bool Prepare()
-        {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
-        }
+        static bool Prepare() => KaosesPartySizesSettings.Instance is { } instance && instance.EnableHideoutTweaks;
     }
 
     /* Duplicates Bannerlord Tweaks
@@ -102,13 +97,13 @@ namespace KaosesPartySizes.Patches
     {
         static bool Prefix(ref int __result)
         {
-            __result = Math.Min(KaosesPartySizesSettings.Instance.PlayerMaximumTroopCountForHideoutMission, 90);
+            __result = Math.Min(instance.PlayerMaximumTroopCountForHideoutMission, 90);
             return false;
         }
 
         static bool Prepare()
         {
-            return KaosesPartySizesSettings.Instance.EnableHideoutTweaks;
+            return instance.EnableHideoutTweaks;
         }
     }
     */

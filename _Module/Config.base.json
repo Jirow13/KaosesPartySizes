@@ -1,0 +1,242 @@
+{
+  /* General Options*/
+  "BIsDebug": false, /* Only enable for debugging*/
+  "bOverRideModLibSettings": false, /* If enabled will force loading of config file even if modlib is enabled*/
+  "ModVersionOfConfig": "0.1.11", /* Currently Not Used DO NOT MODIFY*/
+  "BPrintTroopLimits": false,
+  "BLogPartySpawns": false,
+
+
+  /* General Bandit Population Settings*/
+  "LootersMaximumNoLooterParties": 300, /*Looters maximum number of party default=300*/
+  "numberOfInitialHideouts": 3, /*Number of initial Bandit Hideouts Per Faction default=3*/
+  "maximumHideoutsAtEachBanditFaction": 10, /*Maximum number of Hideouts per bandit faction default=10*/
+  "maximumBanditPartiesAroundEachHideout": 8, /*Maximum number of Parties Around each Hideout for each Bandit faction default=8*/
+  "maximumBanditPartiesInEachHideout": 4, /*Maximum number of Parties In a Hideout for each faction default=4*/
+  "minimumBanditPartiesInAHideoutToInfestIt": 2, /*Minimum number of Parties in a Hideout to infest it default=2*/
+
+
+  /* Bandit Party Template Settings*/
+  "LootersMultiplierEnabled": false, /* Enables Looters stack Multiplier  */
+  "LootersMinMultiplier": "1.0", /* Multiply Looters minimum party sizes  */
+  "LootersMaxMultiplier": "1.0", /*  Multiply Looters maximum party sizes */
+
+
+
+  "ForestBanditMultiplierEnabled": false, /* Enables Forest Bandit stack Multiplier  */
+  "ForestBanditMinMultiplier": "1.0", /*  Multiply Forest bandits minimum party sizes */
+  "ForestBanditMaxMultiplier": "1.0", /* Multiply Forest bandits maximum party sizes  */
+
+  "ForestBossBanditMultiplierEnabled": false, /* Enables Forest Boss Bandit stack Multiplier  */
+  "ForestBossBanditMinMultiplier": "1.0", /* Multiply Forest Boss bandits minimum party sizes  */
+  "ForestBossBanditMaxMultiplier": "1.0", /* Multiply Forest Boss bandits maximum party sizes  */
+
+
+
+  "SeaBanditsMultiplierEnabled": false, /* Enables Sea Bandit stack Multiplier  */
+  "SeaBanditMinMultiplier": "1.0", /* Multiply Sea bandits minimum party sizes  */
+  "SeaBanditMaxMultiplier": "1.0", /* Multiply Sea bandits maximum party sizes  */
+
+  "SeaBossBanditsMultiplierEnabled": false, /* Enables Sea Boss Bandit stack Multiplier  */
+  "SeaBossBanditMinMultiplier": "1.0", /*  Multiply Sea Boss bandits minimum party sizes */
+  "SeaBossBanditMaxMultiplier": "1.0", /* Multiply Sea Boss bandits maximum party sizes  */
+
+
+
+  "MountainBanditsMultiplierEnabled": false, /* Enables Mountain Bandit stack Multiplier  */
+  "MountainBanditMinMultiplier": "1.0", /* Multiply Mountain bandits minimum party sizes  */
+  "MountainBanditMaxMultiplier": "1.0", /* Multiply Mountain bandits maximum party sizes  */
+
+  "MountainBossBanditsMultiplierEnabled": false, /* Enables Mountain Boss Bandit stack Multiplier  */
+  "MountainBossBanditMinMultiplier": "1.0", /*  Multiply Mountain Boss bandits minimum party sizes */
+  "MountainBossBanditMaxMultiplier": "1.0", /* Multiply Mountain Boss bandits maximum party sizes  */
+
+
+
+  "DesertBanditsMultiplierEnabled": false, /* Enables Desert Bandit stack Multiplier  */
+  "DesertBanditMinMultiplier": "1.0", /* Multiply Desert bandits minimum party sizes  */
+  "DesertBanditMaxMultiplier": "1.0", /*  Multiply Desert bandits maximum party sizes */
+
+  "DesertBossBanditsMultiplierEnabled": false, /* Enables Desert Boss Bandit stack Multiplier  */
+  "DesertBossBanditMinMultiplier": "1.0", /*  Multiply Desert Boss bandits minimum party sizes */
+  "DesertBossBanditMaxMultiplier": "1.0", /*  Multiply Desert Boss bandits maximum party sizes */
+
+
+
+  "SteppeBanditsMultiplierEnabled": false, /* Enables Steppe Bandit stack Multiplier  */
+  "SteppeBanditMinMultiplier": "1.0", /* Multiply Steppe bandits minimum party sizes  */
+  "SteppeBanditMaxMultiplier": "1.0", /* Multiply Steppe bandits maximum party sizes  */
+
+  "SteppeBossBanditsMultiplierEnabled": false, /* Enables Steppe Boss Bandit stack Multiplier  */
+  "SteppeBossBanditMinMultiplier": "1.0", /* Multiply Steppe Boss bandits minimum party sizes  */
+  "SteppeBossBanditMaxMultiplier": "1.0", /* Multiply Steppe Boss bandits maximum party sizes  */
+
+
+
+  /* AI Kingdom Party Template Settings*/
+  "EmpireKingdomMultiplierEnabled": false, /* Enables Empire Kingdom stack Multiplier  */
+  "EmpireKingdomMinMultiplier": "1.0", /* Multiply Empire Kingdom minimum party sizes  */
+  "EmpireKingdomMaxMultiplier": "1.0", /* Multiply Empire Kingdom maximum party sizes  */
+
+  "SturgiaKingdomMultiplierEnabled": false, /* Enables Sturgia Kingdom stack Multiplier  */
+  "SturgiaKingdomMinMultiplier": "1.0", /* Multiply Sturgia Kingdom minimum party sizes  */
+  "SturgiaKingdomMaxMultiplier": "1.0", /* Multiply Sturgia Kingdom maximum party sizes  */
+
+
+  "AseraiKingdomMultiplierEnabled": false, /* Enables Aserai Kingdom stack Multiplier  */
+  "AseraiKingdomMinMultiplier": "1.0", /* Multiply Aserai Kingdom minimum party sizes  */
+  "AseraiKingdomMaxMultiplier": "1.0", /* Multiply Aserai Kingdom maximum party sizes  */
+
+  "VlandiaKingdomMultiplierEnabled": false, /* Enables Vlandia Kingdom stack Multiplier  */
+  "VlandiaKingdomMinMultiplier": "1.0", /* Multiply Vlandia Kingdom minimum party sizes  */
+  "VlandiaKingdomMaxMultiplier": "1.0", /* Multiply Vlandia Kingdom maximum party sizes  */
+
+
+  "BattaniaKingdomMultiplierEnabled": false, /* Enables Battania Kingdom stack Multiplier  */
+  "BattaniaKingdomMinMultiplier": "1.0", /* Multiply Battania Kingdom minimum party sizes  */
+  "BattaniaKingdomMaxMultiplier": "1.0", /* Multiply Battania Kingdom maximum party sizes  */
+
+  "KhuzaitKingdomMultiplierEnabled": false, /* Enables Khuzait Kingdom stack Multiplier  */
+  "KhuzaitKingdomMinMultiplier": "1.0", /*  Multiply Khuzait Kingdom minimum party sizes */
+  "KhuzaitKingdomMaxMultiplier": "1.0", /* Multiply Khuzait Kingdom maximum party sizes  */
+
+
+  /* All Kingdom Villagers Party Template Settings*/
+  "VillagersPesantsMultiplierEnabled": false, /* Enables Villagers Peasants stack Multiplier  */
+  "VillagersPesantsMinMultiplier": "1.0", /* Multiply Villagers Peasants minimum party sizes  */
+  "VillagersPesantsMaxMultiplier": "1.0", /* Multiply Villagers Peasants maximum party sizes  */
+
+
+  /* All mercenary Party Template Settings*/
+  "MercenaryFactionsMultiplierEnabled": false, /* Enables Mercenary Factions stack Multiplier  */
+  "MercenaryFactionsMinMultiplier": "1.0", /* Multiply Mercenary Factions minimum party sizes  */
+  "MercenaryFactionsMaxMultiplier": "1.0", /* Multiply Mercenary Factions maximum party sizes  */
+
+
+  /* All outlaw Party Template Settings*/
+  "OutlawFactionsMultiplierEnabled": false, /* Enables Outlaw Factions stack Multiplier  */
+  "OutlawFactionsMinMultiplier": "1.0", /* Multiply Outlaw Factions minimum party sizes  */
+  "OutlawFactionsMaxMultiplier": "1.0", /* Multiply Outlaw Factions maximum party sizes  */
+
+
+  /* All Kingdom Caravan Party Template Settings*/
+  "EliteCaravansMultiplierEnabled": false, /* Enables Elite Caravans Factions stack Multiplier  */
+  "EliteCaravansMinMultiplier": "1.0", /* Multiply Elite Caravans minimum party sizes  */
+  "EliteCaravansMaxMultiplier": "1.0", /* Multiply Elite Caravans maximum party sizes  */
+
+  "CaravansMultiplierEnabled": false, /* Enables Caravans Factions stack Multiplier  */
+  "CaravansMinMultiplier": "1.0", /* Multiply Caravans minimum party sizes  */
+  "CaravansMaxMultiplier": "1.0", /* Multiply Caravans maximum party sizes  */
+
+
+
+  /* All minor Factions Party Template Settings*/
+  "MinorFactionsMultiplierEnabled": false, /*  Enables Minor Factions stack Multiplier */
+  "MinorFactionsMinMultiplier": "1.0", /*  Multiply Minor Factions minimum party sizes */
+  "MinorFactionsMaxMultiplier": "1.0", /*  Multiply Minor Factions maximum party sizes */
+
+
+
+
+  /* Player Related Party Template Settings*/
+  "GamescomMultiplierEnabled": false, /* Enables Player gamescom stack Multiplier  */
+  "GamescomMinMultiplier": "1.0", /* Multiply Player gamescom minimum party sizes  */
+  "GamescomMaxMultiplier": "1.0", /* Multiply Player gamescom maximum party sizes  */
+
+  "CharKingdomMultiplierEnabled": false, /* Enables Player creation kingdom stack Multiplier"  */
+  "CharKingdomMinMultiplier": "1.0", /* Multiply Player creation kingdom minimum party sizes  */
+  "CharKingdomMaxMultiplier": "1.0", /* Multiply Player creation kingdom maximum party sizes  */
+
+
+
+  /*NON Native Bandit Party Template Settings*/
+  "OtherBanditsMultiplierEnabled": false, /* Enables Other Bandits stack Multiplier  */
+  "OtherBanditsMinMultiplier": "1.0", /*  Multiply Other Bandits minimum party sizes */
+  "OtherBanditsMaxMultiplier": "1.0", /* Multiply Other Bandits maximum party sizes  */
+
+  "OtherBanditsBossMultiplierEnabled": false, /* Enables Other Bandits Boss stack Multiplier  */
+  "OtherBanditsBossMinMultiplier": "1.0", /* Multiply Other Bandits Boss minimum party sizes  */
+  "OtherBanditsBossMaxMultiplier": "1.0", /* Multiply Other Bandits Boss maximum party sizes  */
+
+
+  /*NON Native Kingdom Party Template Settings*/
+  "OtherKingdomMultiplierEnabled": false, /* Enables Other Kingdom stack Multiplier   */
+  "OtherKingdomMinMultiplier": "1.0", /* Multiply Other Kingdom minimum party sizes  */
+  "OtherKingdomMaxMultiplier": "1.0", /* Multiply Other Kingdom maximum party sizes  */
+
+
+  /*NON Native Minor Factions Party Template Settings*/
+  "OtherMinorFactionsMultiplierEnabled": false, /* Enables Other Minor Factions stack Multiplier  */
+  "OtherMinorFactionsMinMultiplier": "1.0", /* Multiply Other Minor Factions minimum party sizes  */
+  "OtherMinorFactionsMaxMultiplier": "1.0", /* Multiply Other Minor Factions maximum party sizes  */
+
+
+  /* MOD CUSTOM SPAWNS Party Template Settings*/
+  "CSFactionsMultiplierEnabled": false, /* Enables Custom Spawn Factions stack Multiplier   */
+  "CSFactionsMinMultiplier": "1.0", /* Multiply Custom Spawn minimum party sizes  */
+  "CSFactionsMaxMultiplier": "1.0", /* Multiply Custom Spawn maximum party sizes  */
+
+
+
+  /* Party Speeds Modifiers */
+  "KaosesSpeedModifiersEnabled": true, /* Enables Kaoses Speed Modifiers, disable if using a different speed modifier  */
+  "KaosesSpeedMinimumEnforcedEnabled": true, /* Enables Enforcing minimum Speed limit of 1.0 version 0.1.9 (Deprecated version 0.1.10)  */
+  "KaosesmininumSpeedAmount": "1.0", /* Set the minimum speed a party can be reduced to version 0.1.10 */
+  /* Bandit Party Speeds Modifiers */
+  "LooterSpeedReductiontEnabled": false, /* Enables Looter Speed Reduction  */
+  "LooterSpeedReductionAmount": "-0.8", /* Amount to reduce Looter speeds by  */
+
+  "MountainSpeedReductiontEnabled": false, /* Enables Mountain Speed Reduction  */
+  "MountainSpeedReductionAmount": "-0.8", /* Amount to reduce Mountain speeds by */
+
+  "ForestSpeedReductiontEnabled": false, /* Enables Forest Speed Reduction  */
+  "ForestSpeedReductionAmount": "-0.8", /* Amount to reduce Forest speeds by */
+
+  "SeaRaiderSpeedReductiontEnabled": false, /* Enables SeaRaider Speed Reduction  */
+  "SeaRaiderSpeedReductionAmount": "-0.8", /* Amount to reduce SeaRaider speeds by */
+
+  "SteppeSpeedReductiontEnabled": false, /* Enables Steppe Speed Reduction  */
+  "SteppeSpeedReductionAmount": "-0.4", /* Amount to reduce Steppe speeds by */
+
+  "DesertSpeedReductiontEnabled": false, /* Enables Desert Speed Reduction  */
+  "DesertSpeedReductionAmount": "-0.4", /* Amount to reduce Desert speeds by  */
+
+
+
+  /* Caravan Party Speeds Modifiers */
+  "CaravanSpeedReductiontEnabled": false, /* Enables Caravan Speed Reduction  */
+  "CaravanSpeedReductionAmount": "-1.5", /* Amount to reduce Caravan speeds by */
+
+  "EliteCaravanSpeedReductiontEnabled": false, /* Enables Elite Caravan Speed Reduction  */
+  "EliteCaravanSpeedReductionAmount": "-1.5", /* Amount to reduce Elite Caravan speeds by */
+
+
+  /* Villager Party Speeds Modifiers */
+  "VillagerSpeedReductiontEnabled": false, /* Enables Villager Speed Reduction  */
+  "VillagerSpeedReductionAmount": "0.0", /* Amount to reduce Villager speeds by */
+
+
+  /* Players Party Speeds Modifiers */
+  "PlayerSpeedReductiontEnabled": false, /* Enables player Speed Reduction  */
+  "PlayerSpeedReductionAmount": "0.0", /* Amount to reduce Player speeds by */
+
+
+
+  /* Players Party Speeds Modifiers */
+  "PlayerCompanionSpeedReductiontEnabled": false, /* Enables Player Companions Party Speed Reduction  */
+  "PlayerCompanionSpeedReductionAmount": "0.0", /* Amount to reduce Player Companions Party speeds by */
+
+
+
+
+  /* Kingdom Party Speeds Modifiers */
+  "KingdomSpeedReductiontEnabled": false, /* Enables AI Kingdom Speed Reduction  */
+  "KingdomSpeedReductionAmount": "0.0", /* Amount to reduce AI Kingdom speeds by */
+
+
+  /* Kingdom Party Speeds Modifiers */
+  "OtherKingdomSpeedReductionEnabled": false, /* Enables Other Minor parties Speed Reduction  */
+  "OtherKingdomSpeedReductionAmount": "0.0" /* Amount to reduce Other Minor Fations parties speeds by */
+
+
+}

@@ -10,22 +10,18 @@ namespace KaosesPartySizes.Utils
 			this._logPath = logPath;
 		}
 
-		public void logString(string message)
+		public void LogString(string message)
 		{
-			using (StreamWriter sw = File.AppendText(this._logPath))
-			{
-				sw.WriteLine(message);
-			}
+            using StreamWriter sw = File.AppendText(this._logPath);
+            if (sw is not null) sw.WriteLine(message);
+        }
+
+		public static void Lm(string message)
+		{
+			using StreamWriter sw = File.AppendText("..\\\\..\\\\Modules\\\\KaosesPartySizes\\KaosLog.txt");
+			if (sw is not null) sw.WriteLine(message);
 		}
 
-		public static void lm(string message)
-		{
-			using (StreamWriter sw = File.AppendText("..\\\\..\\\\Modules\\\\KaosesPartySizes\\KaosLog.txt"))
-			{
-				sw.WriteLine(message);
-			}
-		}
-
-		private string _logPath;
+		private readonly string _logPath;
 	}
 }

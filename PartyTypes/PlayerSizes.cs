@@ -1,6 +1,7 @@
 ﻿using System;
 using KaosesPartySizes.Objects;
 using KaosesPartySizes.Settings;
+using KaosesPartySizes.Utils;
 using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
@@ -9,18 +10,24 @@ namespace KaosesPartySizes.PartyTypes
 	{	
 		public PlayerSizes(PartyTemplateObject pt)
 		{
-			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("char_") && KaosesPartySizesSettings.Instance.charKingdomMultiplierEnabled;
+			if (!(KaosesPartySizesSettings.Instance is { } instance))
+			{
+				Ux.ShowMessageError("Kaoses Party sizes: Error setting 'Player Party' Sizes!");
+				return;
+			}
+
+			this.PartyTemplate = pt;
+			bool flag = this.PartyTemplate.StringId.Contains("char_") && instance.CharKingdomMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(KaosesPartySizesSettings.Instance.charKingdomMinMultiplier, KaosesPartySizesSettings.Instance.charKingdomMaxMultiplier);
+				base.ProcessParties(instance.CharKingdomMinMultiplier, instance.CharKingdomMaxMultiplier);
 			}
 			else
 			{
-				bool flag2 = this._partyTemplate.StringId.Contains("gamescom_player") && KaosesPartySizesSettings.Instance.gamescomMultiplierEnabled;
+				bool flag2 = this.PartyTemplate.StringId.Contains("gamescom_player") && instance.GamescomMultiplierEnabled;
 				if (flag2)
 				{
-					base.processParties(KaosesPartySizesSettings.Instance.gamescomMinMultiplier, KaosesPartySizesSettings.Instance.gamescomMaxMultiplier);
+					base.ProcessParties(instance.GamescomMinMultiplier, instance.GamescomMaxMultiplier);
 				}
 			}
 		}

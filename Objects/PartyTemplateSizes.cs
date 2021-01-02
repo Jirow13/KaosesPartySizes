@@ -8,35 +8,35 @@ namespace KaosesPartySizes.Objects
 	{
 		public PartyTemplateSizes(PartyTemplateObject pt)
 		{
-			bool flag = pt.StringId.Contains("looter") || pt.StringId.Contains("bandit") || pt.StringId.Contains("raider");
+			bool flag = pt.StringId.Contains("Looter") || pt.StringId.Contains("bandit") || pt.StringId.Contains("raider");
 			if (flag)
 			{
 				new BanditSizes(pt);
 			}
 			else
 			{
-				bool flag2 = pt.StringId.Contains("mercenary") || pt.StringId.Contains("outlaw") || pt.StringId.Contains("villager");
+				bool flag2 = pt.StringId.Contains("mercenary") || pt.StringId.Contains("outlaw") || pt.StringId.Contains("Villager");
 				if (flag2)
 				{
 					new MiscSizes(pt);
 				}
 				else
 				{
-					bool flag3 = pt.StringId.Contains("caravan") && !pt.StringId.Contains("char_");
+					bool flag3 = pt.StringId.Contains("Caravan") && !pt.StringId.Contains("char_");
 					if (flag3)
 					{
 						new Caravan(pt);
 					}
 					else
 					{
-						bool flag4 = pt.StringId.Contains("kingdom_hero") && this.isNotRestrictedParty(pt);
+						bool flag4 = pt.StringId.Contains("kingdom_hero") && this.IsNotRestrictedParty(pt);
 						if (flag4)
 						{
 							new KingdomSizes(pt);
 						}
 						else
 						{
-							bool flag5 = pt.StringId.Contains("char_") || (pt.StringId.Contains("gamescom_player") && !pt.StringId.Contains("caravan"));
+							bool flag5 = pt.StringId.Contains("char_") || (pt.StringId.Contains("gamescom_player") && !pt.StringId.Contains("Caravan"));
 							if (flag5)
 							{
 								new PlayerSizes(pt);
@@ -53,7 +53,7 @@ namespace KaosesPartySizes.Objects
 									bool flag7 = pt.StringId.Contains("cs_");
 									if (flag7)
 									{
-										new csSizes(pt);
+										new CSSizes(pt);
 									}
 								}
 							}
@@ -63,7 +63,7 @@ namespace KaosesPartySizes.Objects
 			}
 		}
 
-		public bool isNotRestrictedParty(PartyTemplateObject pt)
+		public bool IsNotRestrictedParty(PartyTemplateObject pt)
 		{
 			bool isRestricted = true;
 			bool flag = pt.StringId.Contains("militia") && pt.StringId.Contains("quest") && pt.StringId.Contains("rebels");

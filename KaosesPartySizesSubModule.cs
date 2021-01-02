@@ -15,7 +15,7 @@ namespace KaosesPartySizes
 {
 		public class KaosesPartySizesSubModule : MBSubModuleBase
 		{
-			private static Harmony harmony = null;
+			private static Harmony? harmony = null;
 			protected override void OnBeforeInitialModuleScreenSetAsRoot()
 			{
 				Ux.ShowMessageInfo("Kaoses Party Sizes is now enabled.");
@@ -29,7 +29,7 @@ namespace KaosesPartySizes
 					}
 					catch (Exception ex)
 					{
-						Ux.ShowMessageError($"Error Initialising Kaoses Party Sizes:\n\n{ex.ToString()}");
+						Ux.ShowMessageError($"Error Initialising Kaoses Party Sizes:\n\n{ex}");
 					}
 				}
 			}
@@ -58,16 +58,15 @@ namespace KaosesPartySizes
 					try
 					{
 						CampaignGameStarter initializer = (CampaignGameStarter)gameStarterObject;
-						bool flag2 = initializer != null;
-						if (flag2)
+						if (initializer != null && KaosesPartySizesSettings.Instance is { } instance)
 						{
-							bool kaosesSpeedModifiersEnabled = KaosesPartySizesSettings.Instance.kaosesSpeedModifiersEnabled;
-							if (kaosesSpeedModifiersEnabled)
+							bool KaosesSpeedModifiersEnabled = instance.KaosesSpeedModifiersEnabled;
+							if (KaosesSpeedModifiersEnabled)
 							{
 								initializer.AddModel(new KaosPartySpeed());
 							}
-							bool bLogPartySpawns = KaosesPartySizesSettings.Instance.bLogPartySpawns;
-							if (bLogPartySpawns)
+							bool BLogPartySpawns = instance.BLogPartySpawns;
+							if (BLogPartySpawns)
 							{
 								initializer.AddBehavior(new KaosesPartiesBehaviour());
 							}
@@ -85,60 +84,51 @@ namespace KaosesPartySizes
 			public override void OnGameInitializationFinished(Game game)
 			{
 				base.OnGameInitializationFinished(game);
-				bool flag = !(game.GameType is Campaign);
-				if (!flag)
+				if (game is not null && game.GameType is Campaign)
 				{
-					Campaign campaign = game.GameType as Campaign;
-					bool flag2 = campaign != null;
-					if (flag2)
+					Campaign? campaign = game.GameType as Campaign;
+					if (campaign is not null)
 					{
-						bool flag3 = MBObjectManager.Instance.GetObjectTypeList<PartyTemplateObject>() != null;
-						if (flag3)
+						if (MBObjectManager.Instance.GetObjectTypeList<PartyTemplateObject>() is { } partyTemplateList)
 						{
-							MBReadOnlyList<PartyTemplateObject> partyTemplateList = MBObjectManager.Instance.GetObjectTypeList<PartyTemplateObject>();
 							for (int index = 0; index < partyTemplateList.Count; index++)
 							{
 								PartyTemplateObject pt = partyTemplateList[index];
 								new PartyTemplateSizes(pt);
 							}
 						}
-						bool bPrintTroopLimits = KaosesPartySizesSettings.Instance.bPrintTroopLimits;
-						if (bPrintTroopLimits)
+						if (KaosesPartySizesSettings.Instance is { } instance && instance.BPrintTroopLimits)
 						{
-							bool flag4 = MBObjectManager.Instance.GetObjectTypeList<PartyTemplateObject>() != null;
-							if (flag4)
+							MBReadOnlyList<PartyTemplateObject> partyTemplateList2 = MBObjectManager.Instance.GetObjectTypeList<PartyTemplateObject>();
+							Logging.Lm("-------------------------------------------");
+							Logging.Lm("Printing Party Template Troop Limits ");
+							for (int index2 = 0; index2 < partyTemplateList2.Count; index2++)
 							{
-								MBReadOnlyList<PartyTemplateObject> partyTemplateList2 = MBObjectManager.Instance.GetObjectTypeList<PartyTemplateObject>();
-								Logging.lm("-------------------------------------------");
-								Logging.lm("Printing Party Template Troop Limits ");
-								for (int index2 = 0; index2 < partyTemplateList2.Count; index2++)
+								Logging.Lm("");
+								PartyTemplateObject pt2 = partyTemplateList2[index2];
+								Logging.Lm("Party String Id: " + pt2.StringId.ToString());
+								if (pt2.Stacks != null)
 								{
-									Logging.lm("");
-									PartyTemplateObject pt2 = partyTemplateList2[index2];
-									Logging.lm("Party String Id: " + pt2.StringId.ToString());
-									if (pt2.Stacks != null)
+									foreach (PartyTemplateStack ps in pt2.Stacks)
 									{
-										foreach (PartyTemplateStack ps in pt2.Stacks)
-										{
-											string[] array = new string[6];
-											array[0] = "Character: ";
-											array[1] = ps.Character.StringId.ToString();
-											array[2] = " Min: ";
-											int num = 3;
-											int num2 = ps.MinValue;
-											array[num] = num2.ToString();
-											array[4] = " Max: ";
-											int num3 = 5;
-											num2 = ps.MaxValue;
-											array[num3] = num2.ToString();
-											Logging.lm(string.Concat(array));
-										}
-										Logging.lm("");
+										string[] array = new string[6];
+										array[0] = "Character: ";
+										array[1] = ps.Character.StringId.ToString();
+										array[2] = " Min: ";
+										int num = 3;
+										int num2 = ps.MinValue;
+										array[num] = num2.ToString();
+										array[4] = " Max: ";
+										int num3 = 5;
+										num2 = ps.MaxValue;
+										array[num3] = num2.ToString();
+										Logging.Lm(string.Concat(array));
 									}
-									else
-									{
-										Logging.lm("No Stacks for " + pt2.StringId);
-									}
+									Logging.Lm("");
+								}
+								else
+								{
+									Logging.Lm("No Stacks for " + pt2.StringId);
 								}
 							}
 						}
@@ -148,16 +138,10 @@ namespace KaosesPartySizes
 
 			public override void OnGameLoaded(Game game, object initializerObject)
 			{
-				CampaignGameStarter gameInitializer = (CampaignGameStarter)initializerObject;
-				bool flag = !(game.GameType is Campaign);
-				if (!flag)
-				{
-					Campaign campaign = game.GameType as Campaign;
-					bool flag2 = campaign != null;
-					if (flag2)
-					{
-					}
-				}
+				//CampaignGameStarter gameInitializer = (CampaignGameStarter)initializerObject;
+                if (game.GameType is Campaign)
+                {
+                }
 			}
 
 			public const string InstanceID = "Kaoses Party Sizes";

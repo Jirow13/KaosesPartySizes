@@ -1,6 +1,7 @@
 ﻿using System;
 using KaosesPartySizes.Objects;
 using KaosesPartySizes.Settings;
+using KaosesPartySizes.Utils;
 using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
@@ -9,18 +10,25 @@ namespace KaosesPartySizes.PartyTypes
 	{
 		public Caravan(PartyTemplateObject pt)
 		{
-			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("elite") && KaosesPartySizesSettings.Instance.eliteCaravansMultiplierEnabled;
+			this.PartyTemplate = pt;
+
+			if (!(KaosesPartySizesSettings.Instance is { } instance))
+			{
+				Ux.ShowMessageError("Kaoses Party sizes: Error setting Caravan Sizes!");
+				return;
+			}
+
+			bool flag = this.PartyTemplate.StringId.Contains("elite") && instance.EliteCaravansMultiplierEnabled;
 			if (flag)
 			{
-				base.processParties(KaosesPartySizesSettings.Instance.eliteCaravansMinMultiplier, KaosesPartySizesSettings.Instance.eliteCaravansMaxMultiplier);
+				base.ProcessParties(instance.EliteCaravansMinMultiplier, instance.EliteCaravansMaxMultiplier);
 			}
 			else
 			{
-				bool caravansMultiplierEnabled = KaosesPartySizesSettings.Instance.caravansMultiplierEnabled;
-				if (caravansMultiplierEnabled)
+				bool CaravansMultiplierEnabled = instance.CaravansMultiplierEnabled;
+				if (CaravansMultiplierEnabled)
 				{
-					base.processParties(KaosesPartySizesSettings.Instance.caravansMinMultiplier, KaosesPartySizesSettings.Instance.caravansMaxMultiplier);
+					base.ProcessParties(instance.CaravansMinMultiplier, instance.CaravansMaxMultiplier);
 				}
 			}
 		}

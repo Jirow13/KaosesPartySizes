@@ -7,6 +7,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Localization;
 
 // Jiros ToDo: Convert this to Harmony so updates to DefaultPartySpeedCalculatingModel don't wreck the mod.
+// Jiros ToDo: Factor in new speed changes and perks as well.
+// 2020-12-31 - v1.5.6.1
 
 namespace KaosesPartySizes.Models
 {
@@ -21,148 +23,146 @@ namespace KaosesPartySizes.Models
 		{
 			PartyBase party = mobileParty.Party;
 			ExplainedNumber explainedNumber = new ExplainedNumber(baseSpeed, explanation, null);
-			TerrainType faceTerrainType = Campaign.Current.MapSceneWrapper.GetFaceTerrainType(mobileParty.CurrentNavigationFace);
-			bool flag = faceTerrainType == TerrainType.Forest;
-			if (flag)
+
+			if (KaosesPartySizesSettings.Instance is { } instance)
 			{
-				explainedNumber.AddFactor(-0.3f, KaosPartySpeed._movingInForest);
-				PerkHelper.AddFeatBonusForPerson(DefaultFeats.Cultural.BattanianForestAgility, mobileParty.Leader, ref explainedNumber);
-			}
-			else
-			{
-				bool flag2 = faceTerrainType == TerrainType.Water || faceTerrainType == TerrainType.River || faceTerrainType == TerrainType.Bridge || faceTerrainType == TerrainType.ShallowRiver;
-				if (flag2)
+				TerrainType faceTerrainType = Campaign.Current.MapSceneWrapper.GetFaceTerrainType(mobileParty.CurrentNavigationFace);
+				if (faceTerrainType == TerrainType.Forest)
 				{
-					explainedNumber.AddFactor(-0.3f, KaosPartySpeed._fordEffect);
+					explainedNumber.AddFactor(-0.3f, _movingInForest);
+					PerkHelper.AddFeatBonusForPerson(DefaultFeats.Cultural.BattanianForestAgility, mobileParty.Leader, ref explainedNumber);
 				}
-			}
-			bool isNight = Campaign.Current.IsNight;
-			if (isNight)
-			{
-				explainedNumber.AddFactor(-0.25f, KaosPartySpeed._night);
-			}
-			bool flag3 = faceTerrainType == TerrainType.Snow;
-			if (flag3)
-			{
-				explainedNumber.AddFactor(-0.1f, KaosPartySpeed._snow);
-				bool flag4 = party.Leader != null;
-				if (flag4)
+
+				else
 				{
-					PerkHelper.AddFeatBonusForPerson(DefaultFeats.Cultural.SturgianSnowAgility, party.Leader, ref explainedNumber);
-				}
-			}
-			bool isActive = mobileParty.IsActive;
-			if (isActive)
-			{
-				bool partyTypeFound = false;
-				bool flag5 = mobileParty.StringId.Contains("looter") && KaosesPartySizesSettings.Instance.looterSpeedReductiontEnabled;
-				if (flag5)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.caravanSpeedReductionAmount, KaosPartySpeed._slowMessage);
-					partyTypeFound = true;
-				}
-				bool flag6 = mobileParty.StringId.Contains("caravan");
-				if (flag6)
-				{
-					bool flag7 = mobileParty.StringId.Contains("elite") && KaosesPartySizesSettings.Instance.eliteCaravanSpeedReductiontEnabled;
-					if (flag7)
+					if (faceTerrainType == TerrainType.Water || faceTerrainType == TerrainType.River || faceTerrainType == TerrainType.Bridge || faceTerrainType == TerrainType.ShallowRiver)
 					{
-						explainedNumber.Add(KaosesPartySizesSettings.Instance.eliteCaravanSpeedReductionAmount, KaosPartySpeed._slowCaravansMessage);
+						explainedNumber.AddFactor(-0.3f, _fordEffect);
 					}
-					else
+				}
+				
+				if (Campaign.Current.IsNight)
+				{
+					explainedNumber.AddFactor(-0.25f, _night);
+				}
+				
+				if (faceTerrainType == TerrainType.Snow)
+				{
+					explainedNumber.AddFactor(-0.1f, _snow);
+					if (party.Leader != null)
 					{
-						bool caravanSpeedReductiontEnabled = KaosesPartySizesSettings.Instance.caravanSpeedReductiontEnabled;
-						if (caravanSpeedReductiontEnabled)
+						PerkHelper.AddFeatBonusForPerson(DefaultFeats.Cultural.SturgianSnowAgility, party.Leader, ref explainedNumber);
+					}
+				}
+
+				if (mobileParty.IsActive)
+				{
+					bool partyTypeFound = false;
+					if (mobileParty.StringId.Contains("Looter") && instance.LooterSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.CaravanSpeedReductionAmount, _slowMessage);
+						partyTypeFound = true;
+					}
+					if (mobileParty.StringId.Contains("Caravan"))
+					{
+						if (mobileParty.StringId.Contains("elite") && instance.EliteCaravanSpeedReductiontEnabled)
 						{
-							explainedNumber.Add(KaosesPartySizesSettings.Instance.caravanSpeedReductionAmount, KaosPartySpeed._slowCaravansMessage);
+							explainedNumber.Add(instance.EliteCaravanSpeedReductionAmount, _slowCaravansMessage);
 						}
-					}
-					partyTypeFound = true;
-				}
-				bool flag8 = mobileParty.StringId.Contains("desert") && KaosesPartySizesSettings.Instance.desertSpeedReductiontEnabled;
-				if (flag8)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.desertSpeedReductionAmount, KaosPartySpeed._slowMessage);
-					partyTypeFound = true;
-				}
-				bool flag9 = mobileParty.StringId.Contains("forest") && KaosesPartySizesSettings.Instance.forestSpeedReductiontEnabled;
-				if (flag9)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.forestSpeedReductionAmount, KaosPartySpeed._slowMessage);
-					partyTypeFound = true;
-				}
-				bool flag10 = mobileParty.StringId.Contains("mountain") && KaosesPartySizesSettings.Instance.mountainSpeedReductiontEnabled;
-				if (flag10)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.mountainSpeedReductionAmount, KaosPartySpeed._slowMessage);
-					partyTypeFound = true;
-				}
-				bool flag11 = mobileParty.StringId.Contains("raider") && KaosesPartySizesSettings.Instance.seaRaiderSpeedReductiontEnabled;
-				if (flag11)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.seaRaiderSpeedReductionAmount, KaosPartySpeed._slowMessage);
-					partyTypeFound = true;
-				}
-				bool flag12 = mobileParty.StringId.Contains("steppe") && KaosesPartySizesSettings.Instance.steppeSpeedReductiontEnabled;
-				if (flag12)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.steppeSpeedReductionAmount, KaosPartySpeed._slowMessage);
-					partyTypeFound = true;
-				}
-				bool flag13 = mobileParty.StringId.Contains("villager") && KaosesPartySizesSettings.Instance.villagerSpeedReductiontEnabled;
-				if (flag13)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.villagerSpeedReductionAmount, KaosPartySpeed._slowVillagerMessage);
-					partyTypeFound = true;
-				}
-				bool flag14 = mobileParty.StringId.Contains("lord_") && KaosesPartySizesSettings.Instance.kingdomSpeedReductiontEnabled;
-				if (flag14)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.kingdomSpeedReductionAmount, KaosPartySpeed._slowKingdomMessage);
-					partyTypeFound = true;
-				}
-				bool flag15 = mobileParty.StringId.Contains("troops_of") && KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionEnabled;
-				if (flag15)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionAmount, KaosPartySpeed._slowMinorMessage);
-					partyTypeFound = true;
-				}
-				bool flag16 = mobileParty.IsMainParty && KaosesPartySizesSettings.Instance.playerSpeedReductiontEnabled;
-				if (flag16)
-				{
-					explainedNumber.Add(KaosesPartySizesSettings.Instance.playerSpeedReductionAmount, KaosPartySpeed._slowPlayerMessage);
-					partyTypeFound = true;
-				}
-				bool flag17 = !mobileParty.IsMainParty && !mobileParty.StringId.Contains("player_") && !mobileParty.StringId.Contains("militias_") && !mobileParty.StringId.Contains("garrison_");
-				if (flag17)
-				{
-					bool flag18 = !partyTypeFound && !mobileParty.IsLeaderless;
-					if (flag18)
-					{
-						Hero hero = mobileParty.LeaderHero;
-						bool flag19 = hero != null;
-						if (flag19)
+						else
 						{
-							Clan clan = hero.Clan;
-							Clan playerClan = Clan.PlayerClan;
-							bool flag20 = clan == playerClan && KaosesPartySizesSettings.Instance.playerCompanionSpeedReductiontEnabled;
-							if (flag20)
+							bool CaravanSpeedReductiontEnabled = instance.CaravanSpeedReductiontEnabled;
+							if (CaravanSpeedReductiontEnabled)
 							{
-								explainedNumber.Add(KaosesPartySizesSettings.Instance.playerCompanionSpeedReductionAmount, KaosPartySpeed._slowPlayerClanMessage);
+								explainedNumber.Add(instance.CaravanSpeedReductionAmount, _slowCaravansMessage);
 							}
-							else
+						}
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("Desert") && instance.DesertSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.DesertSpeedReductionAmount, _slowMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("forest") && instance.ForestSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.ForestSpeedReductionAmount, _slowMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("mountain") && instance.MountainSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.MountainSpeedReductionAmount, _slowMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("raider") && instance.SeaRaiderSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.SeaRaiderSpeedReductionAmount, _slowMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("Steppe") && instance.SteppeSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.SteppeSpeedReductionAmount, _slowMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("Villager") && instance.VillagerSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.VillagerSpeedReductionAmount, _slowVillagerMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("lord_") && instance.KingdomSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.KingdomSpeedReductionAmount, _slowKingdomMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.StringId.Contains("troops_of") && instance.OtherKingdomSpeedReductionEnabled)
+					{
+						explainedNumber.Add(instance.OtherKingdomSpeedReductionAmount, _slowMinorMessage);
+						partyTypeFound = true;
+					}
+
+					if (mobileParty.IsMainParty && instance.PlayerSpeedReductiontEnabled)
+					{
+						explainedNumber.Add(instance.PlayerSpeedReductionAmount, _slowPlayerMessage);
+						partyTypeFound = true;
+					}
+
+					if (!mobileParty.IsMainParty && !mobileParty.StringId.Contains("player_") && !mobileParty.StringId.Contains("militias_") && !mobileParty.StringId.Contains("garrison_"))
+					{
+
+						if (!partyTypeFound && !mobileParty.IsLeaderless)
+						{
+							Hero hero = mobileParty.LeaderHero;
+							if (hero != null)
 							{
-								bool otherKingdomSpeedReductionEnabled = KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionEnabled;
-								if (otherKingdomSpeedReductionEnabled)
+								Clan clan = hero.Clan;
+								Clan PlayerClan = Clan.PlayerClan;
+
+								if (clan == PlayerClan && instance.PlayerCompanionSpeedReductiontEnabled)
 								{
-									explainedNumber.Add(KaosesPartySizesSettings.Instance.otherKingdomSpeedReductionAmount, KaosPartySpeed._slowMinorMessage);
+									explainedNumber.Add(instance.PlayerCompanionSpeedReductionAmount, _slowPlayerClanMessage);
+								}
+								else
+								{
+									bool OtherKingdomSpeedReductionEnabled = instance.OtherKingdomSpeedReductionEnabled;
+									if (OtherKingdomSpeedReductionEnabled)
+									{
+										explainedNumber.Add(instance.OtherKingdomSpeedReductionAmount, _slowMinorMessage);
+									}
 								}
 							}
 						}
 					}
 				}
+				explainedNumber.LimitMin(instance.KaosesMininumSpeedAmount);
 			}
-			explainedNumber.LimitMin(KaosesPartySizesSettings.Instance.kaosesmininumSpeedAmount);
 			return explainedNumber.ResultNumber;
 		}
 
@@ -174,7 +174,7 @@ namespace KaosesPartySizes.Models
 
 		private static readonly TextObject _snow = new TextObject("{=vLjgcdgB}Snow", null);
 
-		private static readonly TextObject _sturgiaSnowBonus = new TextObject("{=0VfEGekD}Sturgia Snow Bonus", null);
+		//private static readonly TextObject _sturgiaSnowBonus = new TextObject("{=0VfEGekD}Sturgia Snow Bonus", null);
 
 		private static readonly TextObject _slowMessage = new TextObject("{=1ZiDIanZ}Kaoses Bandits", null);
 

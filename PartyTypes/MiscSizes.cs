@@ -1,6 +1,7 @@
 ﻿using System;
 using KaosesPartySizes.Objects;
 using KaosesPartySizes.Settings;
+using KaosesPartySizes.Utils;
 using TaleWorlds.CampaignSystem;
 
 namespace KaosesPartySizes.PartyTypes
@@ -9,39 +10,46 @@ namespace KaosesPartySizes.PartyTypes
 	{
 		public MiscSizes(PartyTemplateObject pt)
 		{
-			this._partyTemplate = pt;
-			bool flag = this._partyTemplate.StringId.Contains("mercenary") && KaosesPartySizesSettings.Instance.mercenaryFactionsMultiplierEnabled;
-			if (flag)
+			PartyTemplate = pt;
+
+			if (!(KaosesPartySizesSettings.Instance is { } instance))
 			{
-				base.processParties(KaosesPartySizesSettings.Instance.mercenaryFactionsMinMultiplier, KaosesPartySizesSettings.Instance.mercenaryFactionsMaxMultiplier);
+				Ux.ShowMessageError("Kaoses Party sizes: Error setting 'Misc Party' Sizes!");
+				return;
+			}
+
+			bool flag = this.PartyTemplate.StringId.Contains("mercenary") && instance.MercenaryFactionsMultiplierEnabled;
+			if (flag && pt is not null)
+			{
+				base.ProcessParties(instance.MercenaryFactionsMinMultiplier, instance.MercenaryFactionsMaxMultiplier);
 			}
 			else
 			{
-				bool flag2 = this._partyTemplate.StringId.Contains("outlaw") && KaosesPartySizesSettings.Instance.outlawFactionsMultiplierEnabled;
+				bool flag2 = this.PartyTemplate.StringId.Contains("outlaw") && instance.OutlawFactionsMultiplierEnabled;
 				if (flag2)
 				{
-					base.processParties(KaosesPartySizesSettings.Instance.outlawFactionsMinMultiplier, KaosesPartySizesSettings.Instance.outlawFactionsMaxMultiplier);
+					base.ProcessParties(instance.OutlawFactionsMinMultiplier, instance.OutlawFactionsMaxMultiplier);
 				}
 				else
 				{
-					bool flag3 = this._partyTemplate.StringId.Contains("villager") && KaosesPartySizesSettings.Instance.villagersPesantsMultiplierEnabled;
+					bool flag3 = this.PartyTemplate.StringId.Contains("Villager") && instance.VillagersPesantsMultiplierEnabled;
 					if (flag3)
 					{
-						base.processParties(KaosesPartySizesSettings.Instance.villagersPesantsMinMultiplier, KaosesPartySizesSettings.Instance.villagersPesantsMaxMultiplier);
+						base.ProcessParties(instance.VillagersPesantsMinMultiplier, instance.VillagersPesantsMaxMultiplier);
 					}
 				}
 			}
 		}
 
-		public void processMercenary()
+		public void ProcessMercenary()
 		{
 		}
 
-		public void processOutlaw()
+		public void ProcessOutlaw()
 		{
 		}
 
-		public void processVillager()
+		public void ProcessVillager()
 		{
 		}
 	}

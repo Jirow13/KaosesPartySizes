@@ -17,7 +17,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.lootersMaximumNoLooterParties;
+				return instanceLootersMaximumNoLooterParties;
 			}
 		}
 
@@ -27,7 +27,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.NumberOfMinimumBanditPartiesInAHideoutToInfestIt;
+				return instanceNumberOfMinimumBanditPartiesInAHideoutToInfestIt;
 			}
 		}
 
@@ -37,7 +37,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.NumberOfMaximumBanditPartiesInEachHideout;
+				return instanceNumberOfMaximumBanditPartiesInEachHideout;
 			}
 		}
 
@@ -47,7 +47,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.NumberOfMaximumBanditPartiesAroundEachHideout;
+				return instanceNumberOfMaximumBanditPartiesAroundEachHideout;
 			}
 		}
 
@@ -57,7 +57,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.NumberOfMaximumHideoutsAtEachBanditFaction;
+				return instanceNumberOfMaximumHideoutsAtEachBanditFaction;
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.NumberOfInitialHideoutsAtEachBanditFaction;
+				return instanceNumberOfInitialHideoutsAtEachBanditFaction;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
             {
-				return KaosesPartySizesSettings.Instance.PlayerMaximumTroopCountForHideoutMission;
+				return instancePlayerMaximumTroopCountForHideoutMission;
 			}
 		}
 
@@ -97,7 +97,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.PlayerMaximumTroopCountForHideoutMission;
+				return instancePlayerMaximumTroopCountForHideoutMission;
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace KaosesPartySizes.Models
 		{
 			get
 			{
-				return KaosesPartySizesSettings.Instance.PlayerMaximumTroopCountForHideoutMission;
+				return instancePlayerMaximumTroopCountForHideoutMission;
 			}
 		}
 	}

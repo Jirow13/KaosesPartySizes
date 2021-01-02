@@ -7,53 +7,48 @@ namespace KaosesPartySizes.Objects
 {
 	public class BaseTemplateSizes
 	{
-		public void processParties(float minMultiplier, float maxMultiplier)
+		public void ProcessParties(float minMultiplier, float maxMultiplier)
 		{
-			bool flag = this._partyTemplate != null;
-
-			//if (flag)
-			if (flag && this._partyTemplate.Stacks != null)
+			if (PartyTemplate != null && PartyTemplate.Stacks != null)
 			{
-				Ux.ShowMessageDebug("this._partyTemplate = " + this._partyTemplate.StringId);
-				Ux.ShowMessageDebug("Stacks.Count = " + this._partyTemplate.Stacks.Count);
-				for (int i = 0; i < this._partyTemplate.Stacks.Count; i++)
+				Ux.ShowMessageDebug("PartyTemplate = " + PartyTemplate.StringId);
+				Ux.ShowMessageDebug("Stacks.Count = " + PartyTemplate.Stacks.Count);
+				for (int i = 0; i < PartyTemplate.Stacks.Count; i++)
 				{
 					Ux.ShowMessageDebug("Starting i = "+i);
-					this._partyTemplate.Stacks[i] = this.processStacks(this._partyTemplate.Stacks[i], minMultiplier, maxMultiplier);
+					PartyTemplate.Stacks[i] = this.ProcessStacks(PartyTemplate.Stacks[i], minMultiplier, maxMultiplier);
 				}
 			}
 			else
 			{
-				Ux.ShowMessageDebug("Kaoses Parties processParties invalid Party template or no stacks");
+				Ux.ShowMessageDebug("Kaoses Parties ProcessParties invalid Party template or no stacks");
 			}
 		}
 
-		public void processBanditBoss(float minMultiplier, float maxMultiplier)
+		public void ProcessBanditBoss(float minMultiplier, float maxMultiplier)
 		{
-			bool flag = this._partyTemplate != null;
-			//if (flag)
-			if (flag && this._partyTemplate.Stacks != null)
+			if (PartyTemplate != null && PartyTemplate.Stacks != null)
 			{
-				for (int i = 0; i < this._partyTemplate.Stacks.Count; i++)
+				for (int i = 0; i < PartyTemplate.Stacks.Count; i++)
 				{
-					PartyTemplateStack item = this._partyTemplate.Stacks[i];
+					PartyTemplateStack item = PartyTemplate.Stacks[i];
 					bool flag2 = !item.Character.StringId.Contains("boss");
 					if (flag2)
 					{
-						this._partyTemplate.Stacks[i] = this.processStacks(this._partyTemplate.Stacks[i], minMultiplier, maxMultiplier);
+						PartyTemplate.Stacks[i] = ProcessStacks(PartyTemplate.Stacks[i], minMultiplier, maxMultiplier);
 					}
 				}
 			}
 			else
 			{
-				Ux.ShowMessageError("Kaoses Parties processBanditBoss invalid Party template or no stacks");
+				Ux.ShowMessageError("Kaoses Parties ProcessBanditBoss invalid Party template or no stacks");
 			}
 		}
 
-		private PartyTemplateStack processStacks(PartyTemplateStack partyStack, float minMultiplier, float maxMultiplier)
+		private PartyTemplateStack ProcessStacks(PartyTemplateStack partyStack, float minMultiplier, float maxMultiplier)
 		{
-			int newMin = this.getNewFloatValue(partyStack.MinValue, minMultiplier);
-			int newMax = this.getNewFloatValue(partyStack.MaxValue, maxMultiplier);
+			int newMin = GetNewFloatValue(partyStack.MinValue, minMultiplier);
+			int newMax = GetNewFloatValue(partyStack.MaxValue, maxMultiplier);
 			bool flag = newMax < newMin;
 			if (flag)
 			{
@@ -64,9 +59,9 @@ namespace KaosesPartySizes.Objects
 			return partyStack;
 		}
 
-		public int getNewFloatValue(int value, float multiplier)
+		public int GetNewFloatValue(int value, float multiplier)
 		{
-			float tmpMin = (float)value * multiplier;
+			float tmpMin = value * multiplier;
 			int newValue = (int)tmpMin;
 			bool flag = newValue < 1 && value >= 1;
 			if (flag)
@@ -76,18 +71,18 @@ namespace KaosesPartySizes.Objects
 			return newValue;
 		}
 
-		public bool isBossParty()
+		public bool IsBossParty()
 		{
 			bool isBoss = false;
-			bool flag = this._partyTemplate.StringId.Contains("boss");
-			if (flag)
+
+			if (PartyTemplate is { } template && template.StringId.Contains("boss"))
 			{
 				isBoss = true;
 			}
 			return isBoss;
 		}
 
-		public bool isNotRestrictedParty(PartyTemplateObject pt)
+		public bool IsNotRestrictedParty(PartyTemplateObject pt)
 		{
 			bool isRestricted = true;
 			bool flag = pt.StringId.Contains("militia") && pt.StringId.Contains("quest") && pt.StringId.Contains("rebels");
@@ -98,6 +93,6 @@ namespace KaosesPartySizes.Objects
 			return isRestricted;
 		}
 
-		public PartyTemplateObject _partyTemplate;
+		public PartyTemplateObject? PartyTemplate;
 	}
 }

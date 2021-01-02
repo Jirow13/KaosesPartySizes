@@ -31,34 +31,30 @@ namespace KaosesPartySizes.Behaviours
 		{
 			try
 			{
-				bool flag = MBObjectManager.Instance.GetObjectTypeList<Clan>() != null;
-				if (flag)
+				if (MBObjectManager.Instance.GetObjectTypeList<Clan>() != null)
 				{
-					bool bLogPartySpawns = KaosesPartySizesSettings.Instance.bLogPartySpawns;
-					if (bLogPartySpawns)
+					if (KaosesPartySizesSettings.Instance is { } instance && instance.BLogPartySpawns)
 					{
-						Logging.lm("-------------------------------------------");
-						Logging.lm(" Logging Party Spawns to File");
-						Logging.lm("ToDays : " + CampaignTime.Now.ToDays.ToString());
-						Logging.lm("Now : " + CampaignTime.Now.ToString());
-						Logging.lm("NumberOfMaximumLooterParties :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumLooterParties.ToString());
-						Logging.lm("NumberOfMinimumBanditPartiesInAHideoutToInfestIt :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMinimumBanditPartiesInAHideoutToInfestIt.ToString());
-						Logging.lm("NumberOfMaximumBanditPartiesInEachHideout :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumBanditPartiesInEachHideout.ToString());
-						Logging.lm("NumberOfMaximumBanditPartiesAroundEachHideout :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumBanditPartiesAroundEachHideout.ToString());
-						Logging.lm("NumberOfMaximumHideoutsAtEachBanditFaction :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumHideoutsAtEachBanditFaction.ToString());
-						Logging.lm("NumberOfInitialHideoutsAtEachBanditFaction :  " + Campaign.Current.Models.BanditDensityModel.NumberOfInitialHideoutsAtEachBanditFaction.ToString());
+						Logging.Lm("-------------------------------------------");
+						Logging.Lm(" Logging Party Spawns to File");
+						Logging.Lm("ToDays : " + CampaignTime.Now.ToDays.ToString());
+						Logging.Lm("Now : " + CampaignTime.Now.ToString());
+						Logging.Lm("NumberOfMaximumLooterParties :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumLooterParties.ToString());
+						Logging.Lm("NumberOfMinimumBanditPartiesInAHideoutToInfestIt :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMinimumBanditPartiesInAHideoutToInfestIt.ToString());
+						Logging.Lm("NumberOfMaximumBanditPartiesInEachHideout :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumBanditPartiesInEachHideout.ToString());
+						Logging.Lm("NumberOfMaximumBanditPartiesAroundEachHideout :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumBanditPartiesAroundEachHideout.ToString());
+						Logging.Lm("NumberOfMaximumHideoutsAtEachBanditFaction :  " + Campaign.Current.Models.BanditDensityModel.NumberOfMaximumHideoutsAtEachBanditFaction.ToString());
+						Logging.Lm("NumberOfInitialHideoutsAtEachBanditFaction :  " + Campaign.Current.Models.BanditDensityModel.NumberOfInitialHideoutsAtEachBanditFaction.ToString());
 						MBReadOnlyList<Clan> clanList = MBObjectManager.Instance.GetObjectTypeList<Clan>();
 						foreach (Clan clan in clanList)
 						{
-							bool flag2 = clan.Culture != null;
-							if (flag2)
+							if (clan.Culture != null)
 							{
-								Logging.lm("------");
-								bool flag3 = this.clanPartyCount.ContainsKey(clan.StringId);
-								if (flag3)
+								Logging.Lm("------");
+								if (this.clanPartyCount.ContainsKey(clan.StringId))
 								{
 									int oldNumber = this.clanPartyCount[clan.StringId];
-									Logging.lm(string.Concat(new string[]
+									Logging.Lm(string.Concat(new string[]
 									{
 										"Clan Name: ",
 										clan.Name.ToString(),
@@ -76,7 +72,7 @@ namespace KaosesPartySizes.Behaviours
 								}
 								else
 								{
-									Logging.lm(string.Concat(new string[]
+									Logging.Lm(string.Concat(new string[]
 									{
 										"Clan Name: ",
 										clan.Name.ToString(),
@@ -89,7 +85,7 @@ namespace KaosesPartySizes.Behaviours
 									}));
 									this.clanPartyCount.Add(clan.StringId, clan.AllParties.Count<MobileParty>());
 								}
-								Logging.lm("");
+								Logging.Lm("");
 							}
 						}
 					}
